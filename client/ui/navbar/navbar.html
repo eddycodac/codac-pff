@@ -1,0 +1,25 @@
+<template name="navbar">
+    <nav class="navbar navbar-light bg-light  " >
+            <a href="/" class="navbar-brand">SamRegal</a>
+        {{#unless loggingIn}}
+        {{#if currentUser }}
+            <span class="navbar-text align-content-center">
+                {{currentUser.username}}
+            </span>
+            <button class="btn btn-outline-danger  js-logout">Déconnexion</button>
+        {{else}}
+            <button class="btn btn-success js-open-log-modal "> Connexion </button>
+        {{/if}}
+        {{/unless}}
+    </nav>
+</template>
+
+<template name="logModal">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {{> atForm}}
+            </div>
+        </div>
+    </div>
+</template>
