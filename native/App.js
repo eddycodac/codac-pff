@@ -7,7 +7,11 @@ import Meteor, {
 } from "react-native-meteor";
 
 /** Connect to server.*/
+<<<<<<< HEAD
 Meteor.connect("ws://10.106.0.76:3000/websocket");
+=======
+Meteor.connect("ws://10.106.0.191:3000/websocket");
+>>>>>>> 27e3064152102b56cf81723c364098cd6f3b5236
 
 class App extends React.Component {
   render() {
