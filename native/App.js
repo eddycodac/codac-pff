@@ -1,3 +1,5 @@
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Meteor, {
@@ -6,12 +8,12 @@ import Meteor, {
   Accounts,
 } from "react-native-meteor";
 
-/** Connect to server.*/
-Meteor.connect("ws://10.106.0.191:3000/websocket");
+/** Connect to server. */
+Meteor.connect("ws://10.106.0.76:3000/websocket");
 
 class App extends React.Component {
   render() {
-    let {
+    const {
       connected,
       user,
       isListLoading,
@@ -33,14 +35,14 @@ reactiveDictionary.set("subsParam", 20);
 
 /** Meteor HOC container component */
 const AppContainer = withTracker(props => {
-  let user = Meteor.user();
-  let connected = Meteor.status().connected;
+  const user = Meteor.user();
+  const {connected} = Meteor.status();
 
-  let subsParam = reactiveDictionary.get("subsParam");
-  let meteorSubscription = Meteor.subscribe("SamplePublication", subsParam);
-  let isListLoading = !meteorSubscription.ready();
-  let list = Meteor.collection("sample.collection").find({});
-  let isListExists = !isListLoading && list.length > 0;
+  const subsParam = reactiveDictionary.get("subsParam");
+  const meteorSubscription = Meteor.subscribe("SamplePublication", subsParam);
+  const isListLoading = !meteorSubscription.ready();
+  const list = Meteor.collection("sample.collection").find({});
+  const isListExists = !isListLoading && list.length > 0;
 
   const handleSubsParam = param => {
     reactiveDictionary.set("subsParam", param);
