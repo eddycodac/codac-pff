@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "devDependencies": {
-    "jest-expo": "~27.0.0",
+    "jest-expo": "^35.0.0",
     "meteor-client-bundler": "0.5.7",
-    "react-native-scripts": "1.14.0",
+    "react-native-scripts": "^2.0.1",
     "react-test-renderer": "16.3.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -24,10 +24,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.52",
-    "expo": "^27.0.1",
+    "expo": "^35.0.0",
     "meteor-node-stubs": "^0.4.1",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
+    "react-native": "^0.61.1",
     "react-native-meteor-polyfills": "^1.0.5"
   }
 }
