@@ -22,7 +22,8 @@ Template.formClient.events({
 
         let  messageDoc = {
             content: content,
-            createdAt: new Date()
+            createdAt: new Date(),
+            ownerId: Meteor.userId()
         }
         MessagesClient.insert(messageDoc)
 
@@ -44,7 +45,8 @@ Template.formSam.helpers({
  
          let  messageDoc = {
              content: content,
-             createdAt: new Date()
+             createdAt: new Date(),
+             ownerId: Meteor.userId()
          }
          MessagesSam.insert(messageDoc)
  
