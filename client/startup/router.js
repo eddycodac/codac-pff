@@ -1,15 +1,14 @@
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
 import {BlazeLayout} from 'meteor/kadira:blaze-layout'
 
-FlowRouter.route('/test:Param',{
+FlowRouter.route('/',{
     action(){
-        console.log("Route test!")
+        BlazeLayout.render('layout', { main: 'home' })
     }
 })
 
-
-FlowRouter.route('/',{
+FlowRouter.route('/form',{
     action(){
-        BlazeLayout.render('layout')
+        BlazeLayout.render('layout', { main: 'form' })
     }
 })
