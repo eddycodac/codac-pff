@@ -1,0 +1,11 @@
+<template name="form">
+    <form action class="js-insert-message">
+        <input type="text" name ="content">
+        <button type="submit">Envoyer message</button>
+    </form>
+    <h3>Liste des message</h3>
+    {{#each message in messages}}
+    <p> {{message.content}} </p>
+
+    {{/each}}
+</template>

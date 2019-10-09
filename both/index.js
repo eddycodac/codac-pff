@@ -1,1 +1,2 @@
 import './accountConfig'
+import './collections'
