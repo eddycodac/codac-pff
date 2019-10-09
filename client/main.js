@@ -8,7 +8,7 @@ if (Meteor.isDevelopment){
     window.Messages = Messages
 }
 
-if (MediaStreamError.isDevelopment){
+if (Meteor.isDevelopment){
     window.FlowRouter = FlowRouter
 }
 
