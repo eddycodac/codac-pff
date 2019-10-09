@@ -1,2 +1,1 @@
-export const MessagesClient = new Mongo.Collection('messagesClient')
-export const MessagesSam = new Mongo.Collection('messagesSam')
+export const Messages = new Mongo.Collection('messages')
