@@ -7,8 +7,14 @@ FlowRouter.route('/',{
     }
 })
 
-FlowRouter.route('/form',{
+FlowRouter.route('/formClient',{
     action(){
-        BlazeLayout.render('layout', { main: 'form' })
+        BlazeLayout.render('layout', { main: 'formClient' })
+    }
+})
+
+FlowRouter.route('/formSam',{
+    action(){
+        BlazeLayout.render('layout', { main: 'formSam' })
     }
 })

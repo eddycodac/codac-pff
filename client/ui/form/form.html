@@ -1,11 +1,23 @@
-<template name="form">
-    <form action class="js-insert-message">
+<template name="formClient">
+    <form action class="js-insert-message-client">
         <input type="text" name ="content">
         <button type="submit">Envoyer message</button>
     </form>
     <h3>Liste des message</h3>
-    {{#each message in messages}}
-    <p> {{message.content}} </p>
+    {{#each messageSam in messages_client}}
+    <p> {{messageSam.content}} </p>
+
+    {{/each}}
+</template>
+
+<template name="formSam">
+    <form action class="js-insert-message-sam">
+        <input type="text" name ="content">
+        <button type="submit">Envoyer message</button>
+    </form>
+    <h3>Liste des messages</h3>
+    {{#each messageClient in messages_sam}}
+    <p> {{messageClient.content}} </p>
 
     {{/each}}
 </template>
