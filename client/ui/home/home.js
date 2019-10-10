@@ -17,9 +17,14 @@ Template.logModal.onCreated(function() {
     this.autorun(() =>{
         if(Meteor.userId()){
             Modal.hide('logModal')
-            if (Session.get('redirection')) {
-                FlowRouter.go(Session.get('redirection'))
-                Session.set('redirection', undefined)
+            if (Meteor.user().profile.SamOrNot === "sam" ){
+                FlowRouter.go('/sam_board_display')
+            }
+            else if(Meteor.user().profile.SamOrNot === "passager" ){
+                FlowRouter.go('/needSamForm')
+            }
+            else{
+                FlowRouter.go('/')
             }
         }
     })
