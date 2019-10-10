@@ -1,5 +1,7 @@
 import '../both'
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
+import { Messages } from '../both/collections'
+import { ReactiveVar } from 'meteor/reactive-var'
 
 import './startup/router'
 import './ui/layout/layout'
