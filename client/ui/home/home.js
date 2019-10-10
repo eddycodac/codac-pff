@@ -17,14 +17,19 @@ Template.logModal.onCreated(function() {
     this.autorun(() =>{
         if(Meteor.userId()){
             Modal.hide('logModal')
-            if (Meteor.user().profile.SamOrNot === "sam" ){
-                FlowRouter.go('/sam_board_display')
-            }
-            else if(Meteor.user().profile.SamOrNot === "passager" ){
-                FlowRouter.go('/needSamForm')
+            if ( Meteor.user().services.facebook != undefined ){
+                FlowRouter.go('/')
             }
             else{
-                FlowRouter.go('/')
+                if (Meteor.user().profile.SamOrNot === "sam" ){
+                    FlowRouter.go('/sam_board_display')
+                }
+                else if(Meteor.user().profile.SamOrNot === "passager" ){
+                    FlowRouter.go('/needSamForm')
+                }
+                else{
+                    FlowRouter.go('/')
+                }
             }
         }
     })
