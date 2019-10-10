@@ -24,3 +24,9 @@ FlowRouter.route('/needSamForm',{
         BlazeLayout.render('layout', { main: 'needSamForm' })
     }
 })
+
+FlowRouter.route('/sam_board_display',{
+    action(){
+        BlazeLayout.render('layout', { main: 'sam_board_display' })
+    }
+})
