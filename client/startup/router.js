@@ -19,7 +19,7 @@ FlowRouter.route('/formSam',{
     }
 })
 
-FlowRouter.route('/needSam',{
+FlowRouter.route('/needSamForm',{
     action(){
         BlazeLayout.render('layout', { main: 'needSam' })
     }
