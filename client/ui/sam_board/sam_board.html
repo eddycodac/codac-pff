@@ -1,0 +1,19 @@
+<template name = "sam_board_display" >
+    <h3>Liste des demandes</h3>
+    {{#each formNeedSam in request }}
+        <div class="card mb-2 ">
+            <div class="card-body">
+                <h6 class="card-title">{{formNeedSam.depart_city}} => {{formNeedSam.dest_city}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{formNeedSam.date}} // Heure: {{formNeedSam.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{formNeedSam.passager_number}}
+                    <a href="#" class="card-link">{{formNeedSam.ownerPseudo}}</a>
+                </p>
+
+            </div>
+
+        </div>
+    {{/each}}
+</template>
