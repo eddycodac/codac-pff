@@ -19,14 +19,20 @@ Template.formClient.events({
          
         let content = event.target.content.value
 
-        let  messageDoc = {
-            content: content,
-            createdAt: new Date(),
-            ownerId: Meteor.userId()
-        }
-        MessagesClient.insert(messageDoc)
+        Meteor.call('insertMessageClient', { content: content }, function(err, res) {
+            if(!err) {
+                event.target.content.value = ''
+            }
+        })
 
-        event.target.content.value = ''
+        // let  messageDoc = {
+        //     content: content,
+        //     createdAt: new Date(),
+        //     ownerId: Meteor.userId()
+        // }
+        // MessagesClient.insert(messageDoc)
+
+        
     }
 })
 
@@ -42,13 +48,19 @@ Template.formSam.helpers({
           
          let content = event.target.content.value
  
-         let  messageDoc = {
-             content: content,
-             createdAt: new Date(),
-             ownerId: Meteor.userId()
-         }
-         MessagesSam.insert(messageDoc)
+         Meteor.call('insertMessageSam', { content: content }, function(err, res){
+            if(!err) {
+                event.target.content.value = ''
+            }
+         })
+
+        //  let  messageDoc = {
+        //      content: content,
+        //      createdAt: new Date(),
+        //      ownerId: Meteor.userId()
+        //  }
+        //  MessagesSam.insert(messageDoc)
  
-         event.target.content.value = ''
+         
      }
  })
