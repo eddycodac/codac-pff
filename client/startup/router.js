@@ -48,3 +48,9 @@ FlowRouter.route('/userProfil',{
         BlazeLayout.render('layout', { main: 'userProfil' })
     }
 })
+
+FlowRouter.route('/otherUser',{
+    action(){
+        BlazeLayout.render('layout', { main: 'otherUser' })
+    }
+})
