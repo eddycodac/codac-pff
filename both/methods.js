@@ -95,5 +95,29 @@ Meteor.methods({
             ownerPseudo:Meteor.user().username
         }
         FormNeedSam.insert(Info)
+    },
+
+    updateUserProfil(profil) {
+        check(profil, {
+            lastName: String,  //attention le renvois du selecteur est une string or il est preferable d'avoir un nombre
+            firstName: String, //pareil que le passager number attendu date
+            address: String,
+            city: String,
+            codePostal: String,
+        })
+
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+
+        let newInfo = {
+            lastName: profil.lastName,
+            firstName: profil.firstName,
+            address: profil.address,
+            city: profil.city,
+            codePostal: profil.codePostal,
+            editedAt: new Date()
+        }
+        Meteor.users.update({_id: this.userId}, {$set: newInfo})
     }
 })

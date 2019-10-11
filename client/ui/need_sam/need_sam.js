@@ -33,7 +33,8 @@ Template.needSamForm.events({
                 event.target.wakeup.value = ''
                 event.target.dest_city.value= ''
                 event.target.depart_city.value = ''
-                event.target.passager_number.value= ''            }
+                event.target.passager_number.value= ''            
+            }
         }) 
     }
 })

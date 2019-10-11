@@ -103,4 +103,3 @@ AccountsTemplates.addField({
     displayName: "J’accepte les conditions générales d’utilisation du service.",
     
 });
-

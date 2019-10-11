@@ -36,13 +36,10 @@
                 </div>
               </div>
               <div
-                class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
-              >
+                class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                 <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-sm btn-info mr-4">Connect</a>
-                  <a href="#" class="btn btn-sm btn-default float-right"
-                    >Message</a
-                  >
+                  <a href="#" class="btn btn-sm btn-info mr-4">Mes trajets</a>
+                  <a href="#" class="btn btn-sm btn-default float-right">Messages</a>
                 </div>
               </div>
               <div class="card-body pt-0 pt-md-4">
@@ -59,53 +56,36 @@
                         <span class="heading">10</span>
                         <span class="description">Note</span>
                       </div>
-                      <div>
-                        <span class="heading">89</span>
-                        <span class="description">Comments</span>
-                      </div>
                     </div>
                   </div>
                 </div>
-                <!-- <div class="text-center">
-                  <h3>
-                    Jessica Jones<span class="font-weight-light">, 27</span>
-                  </h3>
-                  <div class="h5 font-weight-300">
-                    <i class="ni location_pin mr-2"></i>Bucharest, Romania
-                  </div>
-                  <div class="h5 mt-4">
-                    <i class="ni business_briefcase-24 mr-2"></i>Solution
-                    Manager - Creative Tim Officer
-                  </div>
-                  <div>
-                    <i class="ni education_hat mr-2"></i>University of Computer
-                    Science
-                  </div>
-                  <hr class="my-4" />
-                  <p>
-                    Ryan — the name taken by Melbourne-raised, Brooklyn-based
-                    Nick Murphy — writes, performs and records all of his own
-                    music.
-                  </p>
-                  <a href="#">Show more</a>
-                </div> -->
+
               </div>
             </div>
           </div>
           <div class="col-xl-8 order-xl-1">
+            <!-- <form action class="js-update-user-profil"> -->
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
                   <div class="col-8">
                     <h3 class="mb-0">Mon compte</h3>
                   </div>
-                  <div class="col-4 text-right">
-                    <a href="#!" class="btn btn-sm btn-primary">Devenir Sam/Passager</a>
-                  </div>
+                  <!-- <div class="col-4 text-right">
+                    <a href="#!" class="btn btn-sm btn-success">Mode Sam/Passager</a>
+                  </div> -->
+                <div class="col-4 text-right">
+                  <select class="custom-select" name="SamOrNot">
+                      <option selected>Choisis ton camp</option>
+                      <option value="sam">Sam</option>
+                      <option value="passager">Passager</option>
+                      <option value="both">Les Deux</option>
+                  </select>
+                </div>
                 </div>
               </div>
               <div class="card-body">
-                <form>
+                <form action class="js-update-user-profil">
                   <h6 class="heading-small text-muted mb-4">
                     Mes informations perso
                   </h6>
@@ -114,31 +94,33 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-username">Nom</label>
+                              <label class="form-control-label" for="input-username" >Nom : {{ currentUser.lastName }} </label>
                               <input
                                 type="text"
                                 id="input-username"
                                 class="form-control form-control-alternative"
                                 placeholder="Nom"
                                 value=""
+                                name="lastName"
                               />
                             </div>
                           </div>
                           <div class="col-lg-6">
                               <div class="form-group focused">
-                                <label class="form-control-label" for="input-username">Prénom</label>
+                                <label class="form-control-label" for="input-username" >Prénom : </label>
                                 <input
                                   type="text"
                                   id="input-username"
                                   class="form-control form-control-alternative"
                                   placeholder="Prénom"
                                   value=""
+                                  name="firstName"
                                 />
                               </div>
                             </div>
                       <div class="col-lg-6">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-username">Pseudo</label>
+                          <label class="form-control-label" for="input-username">Pseudo : {{ currentUser.username }} </label>
                           <input
                             type="text"
                             id="input-username"
@@ -151,7 +133,7 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email"
-                            >Email</label
+                            >Email : {{ currentUser.emails.[0].address }}</label
                           >
                           <input
                             type="email"
@@ -162,40 +144,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label
-                            class="form-control-label"
-                            for="input-first-name"
-                            >First name</label
-                          >
-                          <input
-                            type="text"
-                            id="input-first-name"
-                            class="form-control form-control-alternative"
-                            placeholder="First name"
-                            value="Lucky"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label
-                            class="form-control-label"
-                            for="input-last-name"
-                            >Last name</label
-                          >
-                          <input
-                            type="text"
-                            id="input-last-name"
-                            class="form-control form-control-alternative"
-                            placeholder="Last name"
-                            value="Jesse"
-                          /> -->
-                        <!-- </div> -->
-                      <!-- </div> -->
-                    <!-- </div> -->
                   </div>
                   <hr class="my-4" />
                   <!-- Address -->
@@ -203,14 +151,15 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group focused">
-                          <label class="form-control-label" for="input-address"
-                            >Adresse</label
+                          <label class="form-control-label" for="input-address" 
+                            >Adresse : </label
                           >
                           <input
                             id="input-address"
                             class="form-control form-control-alternative"
                             placeholder="Adresse"
                             type="text"
+                            name="address"
                           />
                         </div>
                       </div>
@@ -226,42 +175,34 @@
                             id="input-city"
                             class="form-control form-control-alternative"
                             placeholder="Ville"
+                            name="city"
                           />
                         </div>
                       </div>
-                      <!-- <div class="col-lg-4">
-                        <div class="form-group focused">
-                          <label class="form-control-label" for="input-country"
-                            >Pays</label
-                          >
-                          <input
-                            type="text"
-                            id="input-country"
-                            class="form-control form-control-alternative"
-                            placeholder="Pays"
-                          />
-                        </div>
-                      </div> -->
                       <div class="col-lg-4">
                         <div class="form-group">
-                          <label class="form-control-label" for="input-country"
+                          <label class="form-control-label" for="input-country" 
                             >Code Postal</label
                           >
                           <input
-                            type="number"
+                            type="text"
                             id="input-postal-code"
                             class="form-control form-control-alternative"
                             placeholder="Code Postal"
+                            name="codePostal"
+                            
                           />
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <!-- Description -->
-                  
+                    <div class="col-6 text-right">
+                        <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
+                      </div>
+                  </div>                  
                 </form>
               </div>
             </div>
+          <!-- </form> -->
           </div>
         </div>
       </div>
