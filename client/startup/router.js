@@ -42,3 +42,9 @@ FlowRouter.route('/bothView',{
         BlazeLayout.render('layout', { main: 'bothView' })
     }
 })
+
+FlowRouter.route('/userProfil',{
+    action(){
+        BlazeLayout.render('layout', { main: 'userProfil' })
+    }
+})
