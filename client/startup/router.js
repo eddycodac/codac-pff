@@ -36,3 +36,9 @@ FlowRouter.route('/fbChooseProfile',{
         BlazeLayout.render('layout', { main: 'fbChooseProfile' })
     }
 })
+
+FlowRouter.route('/bothView',{
+    action(){
+        BlazeLayout.render('layout', { main: 'bothView' })
+    }
+})

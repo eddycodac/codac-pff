@@ -28,7 +28,7 @@ Template.logModal.onCreated(function() {
                     FlowRouter.go('/needSamForm')
                 }
                 else{
-                    FlowRouter.go('/')
+                    FlowRouter.go('/bothView')
                 }
             }
         }
