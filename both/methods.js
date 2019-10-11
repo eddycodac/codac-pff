@@ -104,6 +104,8 @@ Meteor.methods({
             address: String,
             city: String,
             codePostal: String,
+            username: String,
+            emails: String,
         })
 
         if(!this.userId) {
@@ -111,13 +113,27 @@ Meteor.methods({
         }
 
         let newInfo = {
+            
             lastName: profil.lastName,
             firstName: profil.firstName,
             address: profil.address,
             city: profil.city,
             codePostal: profil.codePostal,
-            editedAt: new Date()
+            editedAt: new Date(),
         }
-        Meteor.users.update({_id: this.userId}, {$set: newInfo})
+        let  profilUpdate = {
+            "profile": newInfo
+        }
+        let emailUptade ={
+            "emails.[0]": profil.emails
+        }
+        let usernameUptade ={
+            "username": profil.username
+        }
+        
+        Meteor.users.update({_id: this.userId}, {$set: profilUpdate})
+        Meteor.users.update({_id: this.userId}, {$set: emailUptade})
+        Meteor.users.update({_id: this.userId}, {$set: usernameUptade })
+
     }
 })

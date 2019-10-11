@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group focused">
-                              <label class="form-control-label" for="input-username" >Nom : {{ currentUser.lastName }} </label>
+                              <label class="form-control-label" for="input-username" >Nom : {{ currentUser.profile.lastName }} </label>
                               <input
                                 type="text"
                                 id="input-username"
@@ -107,7 +107,7 @@
                           </div>
                           <div class="col-lg-6">
                               <div class="form-group focused">
-                                <label class="form-control-label" for="input-username" >Prénom : </label>
+                                <label class="form-control-label" for="input-username" >Prénom : {{ currentUser.profile.firstName }}</label>
                                 <input
                                   type="text"
                                   id="input-username"
@@ -127,6 +127,7 @@
                             class="form-control form-control-alternative"
                             placeholder="Pseudo"
                             value=""
+                            name="username"
                           />
                         </div>
                       </div>
@@ -140,6 +141,7 @@
                             id="input-email"
                             class="form-control form-control-alternative"
                             placeholder="sam@example.com"
+                            name="emails"
                           />
                         </div>
                       </div>
@@ -152,7 +154,7 @@
                       <div class="col-md-12">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-address" 
-                            >Adresse : </label
+                            >Adresse : {{ currentUser.profile.address }}</label
                           >
                           <input
                             id="input-address"
@@ -168,7 +170,7 @@
                       <div class="col-lg-4">
                         <div class="form-group focused">
                           <label class="form-control-label" for="input-city"
-                            >Ville</label
+                            >Ville: {{ currentUser.profile.city }}</label
                           >
                           <input
                             type="text"
@@ -182,7 +184,7 @@
                       <div class="col-lg-4">
                         <div class="form-group">
                           <label class="form-control-label" for="input-country" 
-                            >Code Postal</label
+                            >Code Postal: {{ currentUser.profile.codePostal }}</label
                           >
                           <input
                             type="text"
