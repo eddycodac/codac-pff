@@ -1,11 +1,20 @@
 <template name="navbar">
     <nav class="navbar navbar-light bg-light  " >
             <a href="/" class="navbar-brand">SamRegal</a>
-            <button class="btn btn-go-to-profile "> Profile </button>
+            
         {{#unless loggingIn}}
         {{#if currentUser }}
             <span class="navbar-text align-content-center">
-                {{currentUser.username}}
+                <a href="#" class="btn-go-to-profile">
+                    <div class="media align-items-center">
+                        <span class="avatar avatar-sm rounded-circle">
+                            <img
+                            alt="Image placeholder"
+                            src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/team-4-800x800.jpg"
+                            />
+                        </span>
+                    </div>
+                </a>
             </span>
             <button class="btn btn-outline-danger  js-logout">Déconnexion</button>
         {{else}}
