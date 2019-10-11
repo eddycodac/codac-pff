@@ -37,9 +37,9 @@ Meteor.methods({
         MessagesSam.insert(messageDoc)
     },
 
-    updateFbAccountSamOrNot(samOrNot) {
-        check(samOrNot,{
-            samOrNot: String
+    updateFbAccountSamOrNot(SamOrNot) {
+        check(SamOrNot,{
+            SamOrNot: String
         })
 
         if(!this.userId) {
@@ -47,7 +47,7 @@ Meteor.methods({
         }
 
         let  profile = {
-            "profile.samOrNot": samOrNot.samOrNot
+            "profile.SamOrNot": SamOrNot.SamOrNot
         }
         Meteor.users.update({_id: this.userId}, {$set: profile})
     },

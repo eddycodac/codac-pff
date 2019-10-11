@@ -1,7 +1,6 @@
 import './navbar.html'
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
-import '../book_sam/book_sam'
-import '../I_Am_Sam/IAmSam'
+
 
 Template.navbar.events({
     'click .js-open-log-modal'(event, instance){
@@ -10,6 +9,9 @@ Template.navbar.events({
     'click .js-logout'(event, instance){
         Meteor.logout()
         FlowRouter.go('/')
+    },
+    'click .btn-go-to-profile'(event, instance){
+        FlowRouter.go('/userProfil')
     }
 })
 
@@ -24,3 +26,5 @@ Template.logModal.onCreated(function() {
         }
     })
 })
+
+
