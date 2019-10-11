@@ -30,3 +30,15 @@ FlowRouter.route('/sam_board_display',{
         BlazeLayout.render('layout', { main: 'sam_board_display' })
     }
 })
+
+FlowRouter.route('/fbChooseProfile',{
+    action(){
+        BlazeLayout.render('layout', { main: 'fbChooseProfile' })
+    }
+})
+
+FlowRouter.route('/bothView',{
+    action(){
+        BlazeLayout.render('layout', { main: 'bothView' })
+    }
+})
