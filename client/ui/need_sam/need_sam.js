@@ -15,26 +15,25 @@ Template.needSamForm.events({
         const dest_city = event.target.dest_city.value
         const passager_number = event.target.passager_number.value
          
-        let Info = {
-            passager_number:passager_number,
+        
+        Meteor.call('insertFormNeedSam', {
+            passager_number: passager_number,
             date: date,
             time: time,
             depart_address: depart_address,
             depart_city: depart_city,
             dest_address: dest_address,
             dest_city: dest_city,
-            createdAt: new Date(),
-            ownerId: Meteor.userId(),
-             ownerPseudo:Meteor.user().username
-        }
-        FormNeedSam.insert(Info)
 
-        event.target.depart_address.value = ''
-        event.target.dest_address.value = ''
-        event.target.the_date.value = ''
-        event.target.wakeup.value = ''
-        event.target.dest_city.value= ''
-        event.target.depart_city.value = ''
-        event.target.passager_number.value= ''
+        }, function(err, res ){
+            if(!err) {
+                event.target.depart_address.value = ''
+                event.target.dest_address.value = ''
+                event.target.the_date.value = ''
+                event.target.wakeup.value = ''
+                event.target.dest_city.value= ''
+                event.target.depart_city.value = ''
+                event.target.passager_number.value= ''            }
+        }) 
     }
 })
