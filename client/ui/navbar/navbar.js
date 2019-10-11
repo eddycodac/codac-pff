@@ -9,6 +9,9 @@ Template.navbar.events({
     'click .js-logout'(event, instance){
         Meteor.logout()
         FlowRouter.go('/')
+    },
+    'click .btn-go-to-profile'(event, instance){
+        FlowRouter.go('/userProfil')
     }
 })
 
@@ -23,3 +26,5 @@ Template.logModal.onCreated(function() {
         }
     })
 })
+
+
