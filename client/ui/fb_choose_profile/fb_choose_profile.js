@@ -13,19 +13,21 @@ import './fb_choose_profile.html'
         //          event.target.content.value = ''
         //      }
         //  })
-        let  pseudo = {
-            "username": username
-        }
-        let  profile = {
-            "profile.samOrNot": samOrNot
-        }
+       
         
-        Meteor.users.update({_id: Meteor.userId()}, {$set: username})
-        Meteor.users.update({_id: Meteor.userId()}, {$set: profile})
-
         
- 
-        event.target.username.value = ''
-        event.target.samOrNot.value = ''
+        // Meteor.users.update({_id: Meteor.userId()}, {$set: pseudo})
+        Meteor.call('updateFbAccountUsername',{username: username}, function(err, res ){
+            if(!err) {
+                event.target.username.value = ''
+            }
+        }) 
+        // Meteor.users.update({_id: Meteor.userId()}, {$set: profile})
+        Meteor.call('updateFbAccountSamOrNot',{samOrNot: samOrNot}, function(err, res ){
+            if(!err) {
+                event.target.samOrNot.value = ''
+            }
+        })
+        
      }
  })
