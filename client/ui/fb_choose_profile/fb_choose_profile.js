@@ -7,7 +7,7 @@ import './fb_choose_profile.html'
          event.preventDefault()
           
         let username = event.target.username.value
-        let samOrNot = event.target.samOrNot.value
+        let SamOrNot = event.target.SamOrNot.value
         //  Meteor.call('insertMessageClient', { content: content }, function(err, res) {
         //      if(!err) {
         //          event.target.content.value = ''
@@ -23,11 +23,31 @@ import './fb_choose_profile.html'
             }
         }) 
         // Meteor.users.update({_id: Meteor.userId()}, {$set: profile})
-        Meteor.call('updateFbAccountSamOrNot',{samOrNot: samOrNot}, function(err, res ){
+        Meteor.call('updateFbAccountSamOrNot',{SamOrNot: SamOrNot}, function(err, res ){
             if(!err) {
-                event.target.samOrNot.value = ''
+                event.target.SamOrNot.value = ''
             }
         })
         
      }
  })
+
+ Template.fbChooseProfile.onCreated(function() {
+    this.autorun(() =>{
+        if(Meteor.user().username){
+            
+                if (Meteor.user().profile.SamOrNot === "sam" ){
+                    FlowRouter.go('/sam_board_display')
+                }
+                else if(Meteor.user().profile.SamOrNot === "passager" ){
+                    FlowRouter.go('/needSamForm')
+                }
+                else if(Meteor.user().profile.SamOrNot === "both" ){
+                    FlowRouter.go('/bothView')
+                }
+            }
+        })
+
+})
+
+
