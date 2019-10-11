@@ -1,0 +1,26 @@
+<template name="fbChooseProfile">
+    <form class="js-insert-profile-info">
+        <div class="form-group">
+            <label>Complète ton profil</label>
+            <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Pseudo">
+        </div>
+        <select class="custom-select" name="samOrNot">
+                <option selected>Choisis ton camp</option>
+                <option value="sam">Sam</option>
+                <option value="passager">Passager</option>
+                <option value="both">Les Deux</option>
+        </select>
+        <!-- <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Choisis ton camp
+            </button>
+            <div class="dropdown-menu dropdown-menu-lg-right " name="samOrNot">
+                <button class="dropdown-item" type="button" name="sam" >Sam</button>
+                <button class="dropdown-item" type="button" name="passager">Passager</button>
+                <button class="dropdown-item" type="button" name="both">Les Deux</button>
+            </div>
+        </div> -->
+        
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </form>    
+</template>

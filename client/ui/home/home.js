@@ -18,7 +18,7 @@ Template.logModal.onCreated(function() {
         if(Meteor.userId()){
             Modal.hide('logModal')
             if ( Meteor.user().services.facebook != undefined ){
-                FlowRouter.go('/')
+                FlowRouter.go('/fbChooseProfile')
             }
             else{
                 if (Meteor.user().profile.SamOrNot === "sam" ){
