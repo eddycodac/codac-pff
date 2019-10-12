@@ -99,13 +99,13 @@ Meteor.methods({
 
     updateUserProfil(profil) {
         check(profil, {
-            lastName: String,  //attention le renvois du selecteur est une string or il est preferable d'avoir un nombre
-            firstName: String, //pareil que le passager number attendu date
+            lastName: String,  
+            firstName: String, 
             address: String,
             city: String,
             codePostal: String,
             username: String,
-            // emails: String,
+            tel: String,
         })
 
         if(!this.userId) {
@@ -163,9 +163,9 @@ Meteor.methods({
         if (profil.editedAt){
             Meteor.users.update({_id: this.userId}, {$set: editedAtUpdate})
         }
-        // if (profil.emails){
-        //     Meteor.users.update({_id: this.userId}, {$set: emailUpdate})
-        // }
+        if (profil.tel){
+            Meteor.users.update({_id: this.userId}, {$set: tel})
+        }
         if (profil.username){
             Meteor.users.update({_id: this.userId}, {$set: userNameUpdate})
         }

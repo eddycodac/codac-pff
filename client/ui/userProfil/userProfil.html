@@ -68,15 +68,15 @@
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">Mon compte</h3>
+                  <div class="col-5">
+                    <h4 class="mb-0">Compte</h4>
                   </div>
                   <!-- <div class="col-4 text-right">
                     <a href="#!" class="btn btn-sm btn-success">Mode Sam/Passager</a>
                   </div> -->
-                <div class="col-4 text-right">
+                <div class="col-7 text-right">
                   <select class="custom-select" name="SamOrNot">
-                      <option selected>Choisis ton camp</option>
+                      <option selected>{{ currentUser.profile.SamOrNot }}</option>
                       <option value="sam">Sam</option>
                       <option value="passager">Passager</option>
                       <option value="both">Les Deux</option>
@@ -134,15 +134,15 @@
                       <div class="col-lg-6">
                         <div class="form-group">
                           <label class="form-control-label" for="input-email"
-                            >Email : {{ currentUser.emails.[0].address }}</label
+                            >Telephone : {{ currentUser.profile.tel }}</label
                           >
-                          <!-- <input
-                            type="email"
+                          <input
+                            type="tel"
                             id="input-email"
                             class="form-control form-control-alternative"
-                            placeholder="sam@example.com"
-                            name="emails"
-                          /> -->
+                            placeholder="0262974974"
+                            name="tel"
+                          />
                         </div>
                       </div>
                     </div>

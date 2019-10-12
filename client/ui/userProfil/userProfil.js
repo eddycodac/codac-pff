@@ -10,7 +10,7 @@ Template.userProfil.events({
         let city = event.target.city.value
         let codePostal = event.target.codePostal.value
         let username = event.target.username.value
-        let emails = event.target.emails.value
+        let tel = event.target.tel.value
         
         Meteor.call('updateUserProfil', {
             lastName: lastName,
@@ -19,7 +19,7 @@ Template.userProfil.events({
             city: city,
             codePostal: codePostal,
             username: username,
-            emails: emails,
+            tel: tel,
         }, function(err, res){
             if(!err) {
                 event.target.lastName.value = ''
@@ -28,7 +28,7 @@ Template.userProfil.events({
                 event.target.city.value = ''
                 event.target.codePostal.value= ''
                 event.target.username.value= ''
-                event.target.emails.value= ''
+                event.target.tel.value= ''
 
             }    
         })
