@@ -105,7 +105,7 @@ Meteor.methods({
             city: String,
             codePostal: String,
             username: String,
-            emails: String,
+            // emails: String,
         })
 
         if(!this.userId) {
@@ -114,37 +114,38 @@ Meteor.methods({
 
         // let newInfo = {
         let lastnameUpdate = {
-            "lastName": profil.lastName,
+            "profile.lastName": profil.lastName,
         }
         let firstNameUpdate = {
-            "firstName": profil.firstName,
+            "profile.firstName": profil.firstName,
         }
         let addressUpdate = {
-            "address": profil.address,
+            "profile.address": profil.address,
         }
         let cityUpdate = {
-            "city": profil.city,
+            "profile.city": profil.city,
         }
 
         let codePostalUpdate = {
-            "codePostal": profil.codePostal,
+            "profile.codePostal": profil.codePostal,
         }
         let editedAtUpdate = {
-            "editedAt": new Date(),
+            "profile.editedAt": new Date(),
         }
         // }
         // let  profilUpdate = {
         //     "profile": newInfo
         // }
-        let emailUpdate ={
-            "emails.[0]": profil.emails
-        }
+        // let emailUpdate ={
+        //     "emails.[0].adress": profil.emails
+        // }
         let userNameUpdate ={
             "username": profil.username
         }
         
         // Meteor.users.update({_id: this.userId}, {$set: profilUpdate})
         if (profil.lastName){
+            
             Meteor.users.update({_id: this.userId}, {$set: lastnameUpdate})
         }
         if (profil.firstName){
@@ -162,9 +163,9 @@ Meteor.methods({
         if (profil.editedAt){
             Meteor.users.update({_id: this.userId}, {$set: editedAtUpdate})
         }
-        if (profil.emails){
-            Meteor.users.update({_id: this.userId}, {$set: emailUpdate})
-        }
+        // if (profil.emails){
+        //     Meteor.users.update({_id: this.userId}, {$set: emailUpdate})
+        // }
         if (profil.username){
             Meteor.users.update({_id: this.userId}, {$set: userNameUpdate})
         }
