@@ -54,3 +54,9 @@ FlowRouter.route('/otherUser',{
         BlazeLayout.render('layout', { main: 'otherUser' })
     }
 })
+
+FlowRouter.route('/mesTrajets',{
+    action(){
+        BlazeLayout.render('layout', { main: 'mesTrajets' })
+    }
+})
