@@ -132,6 +132,9 @@ Meteor.methods({
         let editedAtUpdate = {
             "profile.editedAt": new Date(),
         }
+        let telUpdate = {
+            "profile.tel": profil.tel
+        }
         // }
         // let  profilUpdate = {
         //     "profile": newInfo
@@ -164,7 +167,7 @@ Meteor.methods({
             Meteor.users.update({_id: this.userId}, {$set: editedAtUpdate})
         }
         if (profil.tel){
-            Meteor.users.update({_id: this.userId}, {$set: tel})
+            Meteor.users.update({_id: this.userId}, {$set: telUpdate})
         }
         if (profil.username){
             Meteor.users.update({_id: this.userId}, {$set: userNameUpdate})

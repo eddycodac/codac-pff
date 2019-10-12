@@ -11,7 +11,7 @@ Template.userProfil.events({
         let codePostal = event.target.codePostal.value
         let username = event.target.username.value
         let tel = event.target.tel.value
-        
+
         Meteor.call('updateUserProfil', {
             lastName: lastName,
             firstName: firstName,
