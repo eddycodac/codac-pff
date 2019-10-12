@@ -1,5 +1,5 @@
 <template name="navbar">
-    <nav class="navbar navbar-light bg-light  " >
+    <nav class="nav navbar navbar-light bg-light  fixed-bottom" >
             <a href="/" class="navbar-brand">SamRegal</a>
             
         {{#unless loggingIn}}
@@ -23,6 +23,38 @@
         {{/unless}}
     </nav>
 </template>
+
+<!-- <template name="bottomNav" >
+        <nav class="nav navbar-dark nav-justified fixed-bottom bg-dark">
+            <a class="nav-item nav-link" href="#">Trajets</a>
+            <a class="nav-item nav-link" href="#">Home</a>
+            {{#unless loggingIn}}
+            {{#if currentUser }}
+                <span class="navbar-text align-content-center">
+                    <a href="#" class="btn-go-to-profile">
+                        <div class="media align-items-center">
+                            <span class="avatar avatar-sm rounded-circle">
+                                <img
+                                alt="Image placeholder"
+                                src="https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/team-4-800x800.jpg"
+                                />
+                            </span>
+                        </div>
+                    </a>
+                </span>
+                <button class="btn btn-outline-danger  js-logout">Déconnexion</button>
+            {{else}}
+                <button class="btn btn-success js-open-log-modal "> Connexion </button>
+            {{/if}}
+            {{/unless}}
+        </nav>
+        <nav class="nav navbar navbar-dark bg-dark fixed-bottom">
+            <a class="nav-item nav-link" href="#">Trajets</a>
+            <a class="nav-item nav-link" href="#">Home</a>
+            <a class="nav-item nav-link disabled" href="#">Profil</a>
+        </nav>
+              
+</template> -->
 
 <template name="logModal">
     <div class="modal fade">

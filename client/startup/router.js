@@ -60,3 +60,9 @@ FlowRouter.route('/mesTrajets',{
         BlazeLayout.render('layout', { main: 'mesTrajets' })
     }
 })
+
+FlowRouter.route('/cgu',{
+    action(){
+        BlazeLayout.render('layout', { main: 'cgu' })
+    }
+})
