@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating'
-import {FormNeedSam} from '../../../both/collections'
+import {FormNeedSam, Match} from '../../../both/collections'
 
 
 import './sam_board.html'
@@ -9,6 +9,17 @@ import { userInfo } from 'os'
 Template.sam_board_display.helpers({
    request(){ 
        return FormNeedSam.find().fetch()
-   }
+   },
+   matchs(){ 
+    return Match.find().fetch()
+}
   
+})
+
+
+Template.sam_board_display.events({
+    'click .js-keepUser'(event, instance){
+        Meteor.call('updateMatch')
+        
+    }    
 })

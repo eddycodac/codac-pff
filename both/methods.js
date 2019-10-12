@@ -1,5 +1,6 @@
-import { MessagesClient, MessagesSam, FormNeedSam } from './collections'
+import { MessagesClient, MessagesSam, FormNeedSam, Match } from './collections'
 import { check } from 'meteor/check'
+import { Random } from 'meteor/random'
 import { stringify } from 'querystring'
 
 Meteor.methods({
@@ -95,6 +96,39 @@ Meteor.methods({
             ownerPseudo:Meteor.user().username
         }
         FormNeedSam.insert(Info)
+    },
+
+    insertMatch() {
+
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+
+        let infos = {
+            samId: '',
+            samPseudo: '',
+            passagerId: this.userId,
+            passagerPseudo: Meteor.user().username,
+            status: false,
+            createdAt: new Date(),
+            cardId: Random.id([10])
+
+        }
+        Match.insert(infos)
+    },
+
+    updateMatch() {
+
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+
+        let matchInfo = {
+            samId: this.userId,
+            samPseudo:  Meteor.user().username
+        }
+        Match.update({cardId: Match.cardId}, {$set: matchInfo})
+        
     },
 
     updateUserProfil(profil) {
