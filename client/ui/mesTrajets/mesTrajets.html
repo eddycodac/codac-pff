@@ -1,3 +1,20 @@
 <template name="mesTrajets">
     <h1>Mes trajets </h1>
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+                <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{trajet.date}} // Heure: {{trajet.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{trajet.passager_number}}
+                    <a href="#" class="card-link">{{trajet.ownerPseudo}}</a>
+                </p>
+            </div>
+        </div>
+        {{/if}}
+    {{/each}}
 </template>
