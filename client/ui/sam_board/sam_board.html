@@ -9,11 +9,11 @@
                 </p>
                 <p class="card-subtitle text-muted">
                     Nombre de Passagers: {{formNeedSam.passager_number}}
-                    <a href="/otherUser/{{formNeedSam.ownerId}}" class="card-link">{{formNeedSam.ownerPseudo}}</a>
                 </p>
-
+                <p>Demande faite par: <a href="/otherUser/{{formNeedSam.ownerId}}" class="card-link">{{formNeedSam.ownerPseudo}}</a></p>
+                <p>Commande numéro: {{formNeedSam._id}}</p>
             </div>
-
-        </div>
+            <button class="btn btn-success my-2 js-keepUser">Prendre la course</button>
+        </div>        
     {{/each}}
 </template>

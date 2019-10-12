@@ -36,6 +36,7 @@ Template.needSamForm.events({
                 event.target.passager_number.value= ''            
             }
         })
+        Meteor.call('insertMatch')
         FlowRouter.go('/mesTrajets') 
     }
 })
