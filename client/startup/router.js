@@ -49,7 +49,7 @@ FlowRouter.route('/userProfil',{
     }
 })
 
-FlowRouter.route('/otherUser',{
+FlowRouter.route('/otherUser/:otherUserId',{
     action(){
         BlazeLayout.render('layout', { main: 'otherUser' })
     }
