@@ -35,6 +35,7 @@ Template.needSamForm.events({
                 event.target.depart_city.value = ''
                 event.target.passager_number.value= ''            
             }
-        }) 
+        })
+        FlowRouter.go('/mesTrajets') 
     }
 })
