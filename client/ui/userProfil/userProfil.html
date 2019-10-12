@@ -68,20 +68,9 @@
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
-                  <div class="col-5">
-                    <h4 class="mb-0">Compte</h4>
-                  </div>
-                  <!-- <div class="col-4 text-right">
-                    <a href="#!" class="btn btn-sm btn-success">Mode Sam/Passager</a>
-                  </div> -->
-                <div class="col-7 text-right">
-                  <select class="custom-select" name="SamOrNot">
-                      <option selected name="SamOrNot" >{{ currentUser.profile.SamOrNot }}</option>
-                      <option value="sam">Sam</option>
-                      <option value="passager">Passager</option>
-                      <option value="both">Les Deux</option>
-                  </select>
-                </div>
+                  <div class="col-12">
+                    <h4 class="mb-0">Mon Compte</h4>
+                  </div>              
                 </div>
               </div>
               <div class="card-body">
@@ -196,6 +185,19 @@
                           />
                         </div>
                       </div>
+                      <div class="col-lg-4">
+                          <div class="form-group">
+                              <label class="form-control-label" for="input-country" 
+                              >Je suis: {{ currentUser.profile.SamOrNot }}</label
+                            >
+                              <select class="custom-select js-change-sam-or-not" name="SamOrNot">
+                                  <option selected  >Choisis ton camps</option>
+                                  <option value="sam">Sam</option>
+                                  <option value="passager">Passager</option>
+                                  <option value="both">Les Deux</option>
+                              </select>
+                          </div>
+                        </div>
                     </div>
                     <div class="col-6 text-right">
                         <button type="submit" class="btn btn-sm btn-primary">Modifier</button>

@@ -11,6 +11,7 @@ Template.userProfil.events({
         let codePostal = event.target.codePostal.value
         let username = event.target.username.value
         let tel = event.target.tel.value
+        let SamOrNot = event.target.SamOrNot.value
 
         Meteor.call('updateUserProfil', {
             lastName: lastName,
@@ -20,6 +21,7 @@ Template.userProfil.events({
             codePostal: codePostal,
             username: username,
             tel: tel,
+            SamOrNot: SamOrNot
         }, function(err, res){
             if(!err) {
                 event.target.lastName.value = ''
@@ -29,10 +31,12 @@ Template.userProfil.events({
                 event.target.codePostal.value= ''
                 event.target.username.value= ''
                 event.target.tel.value= ''
+                event.target.SamOrNot.value= ''
 
             }    
-        })
-    }
+        })   
+    },
+        
 })
 
 

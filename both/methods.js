@@ -106,6 +106,7 @@ Meteor.methods({
             codePostal: String,
             username: String,
             tel: String,
+            SamOrNot:String
         })
 
         if(!this.userId) {
@@ -134,6 +135,9 @@ Meteor.methods({
         }
         let telUpdate = {
             "profile.tel": profil.tel
+        }
+        let SamOrNotUpdate = {
+            "profile.SamOrNot": profil.SamOrNot
         }
         // }
         // let  profilUpdate = {
@@ -172,5 +176,9 @@ Meteor.methods({
         if (profil.username){
             Meteor.users.update({_id: this.userId}, {$set: userNameUpdate})
         }
-    }
+        if (profil.SamOrNot){
+            Meteor.users.update({_id: this.userId}, {$set: SamOrNotUpdate})
+        }
+    },
 })
+
