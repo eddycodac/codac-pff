@@ -2,7 +2,7 @@ import './navbar.html'
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
 
 
-Template.navbar.events({
+Template.bottomNav.events({
     'click .js-open-log-modal'(event, instance){
         Modal.show('logModal')
     },
