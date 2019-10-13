@@ -18,8 +18,12 @@ Template.sam_board_display.helpers({
 
 
 Template.sam_board_display.events({
-    'click .js-keepUser'(event, instance){
-        Meteor.call('updateMatch')
-        
+    'submit .js-keepUser'(event, instance){
+        event.preventDefault()
+        let formId = event.target.formId.value
+        Meteor.call('updateMatch2', { formId: formId }, function(err, res){
+            if(!err) {
+            }
+         })
     }    
 })
