@@ -228,5 +228,74 @@ Meteor.methods({
             Meteor.users.update({_id: this.userId}, {$set: SamOrNotUpdate})
         }
     },
+    updateVadidOrNot(valid) {
+        check(valid, {
+            vadidOrNot: String,
+            formId: String
+        })
+    
+       let Id = valid.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let validation = {
+            vadidOrNot: valid.vadidOrNot,
+        }
+        let killSam ={
+            samId: '',
+            samPseudo: ''
+        }
+        if (valid.vadidOrNot == 'valider'){
+        FormNeedSam.update({_id: Id}, {$set: validation})
+    }
+    else if(valid.vadidOrNot == 'annuler')
+    FormNeedSam.update({_id: Id}, {$set: killSam})
+    },
+
+    updateLifeOrNot(valid) {
+        check(valid, {
+            lifeOrNot: String,
+            formId: String
+        })
+    
+       let Id = valid.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let validation = {
+            lifeOrNot: valid.lifeOrNot,
+        }
+        let killSam ={
+            callPolice: 'true'
+        }
+        if (valid.lifeOrNot == 'yes'){
+        FormNeedSam.update({_id: Id}, {$set: validation})
+    }
+    else if(valid.lifeOrNot == 'no')
+    FormNeedSam.update({_id: Id}, {$set: killSam})
+    },
+
+    updateVomiOrNot(valid) {
+        check(valid, {
+            vomiOrNot: String,
+            formId: String
+        })
+    
+       let Id = valid.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let validation = {
+            vomiOrNot: valid.vomiOrNot,
+        }
+        let sendFlower ={
+            sendFlower: 'true'
+        }
+        FormNeedSam.update({_id: Id}, {$set: validation})
+     if(valid.vomiOrNot == 'yes')
+    FormNeedSam.update({_id: Id}, {$set: sendFlower})
+    }
 })
+
+
 

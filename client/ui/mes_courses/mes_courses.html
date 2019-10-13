@@ -1,5 +1,5 @@
 <template name="mesCourses">
-    <h1>Mes Courses </h1>
+    <h3>Mes courses en attentes </h3>
     {{#each course in mesCourses}}
     {{#if equals course.samId currentUser._id}}
         <div class="card mb-2">
@@ -15,6 +15,68 @@
                 </p>
             </div>
         </div>
+        {{/if}}
+    {{/each}}
+    <h3>Mes courses validés </h3>
+    {{#each course in mesCourses}}
+    {{#if equals course.samId currentUser._id}}
+    {{#if equals course.vadidOrNot 'valider'}}
+    {{#if equals course.vomiOrNot undefined }}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{course.depart_city}} => {{course.dest_city}} </h4>
+                <h6 class="card-title">{{course.depart_address}} => {{course.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{course.date}} // Heure: {{course.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{course.passager_number}}<br>
+                    <p>Crée par:<a href="/otherUser/{{course.ownerId}}" class="card-link">{{course.ownerPseudo}}</a></p> 
+                </p>
+                <form action="" class="js-valid-vomi">
+                    <div class="form-group ">
+                        <select class="custom-select " name="vomiOrNot">
+                            <option selected  >? Déposé sans vomi ?</option>
+                            <option value="yes">Oui</option>
+                            <option value="no">Non</option>
+                        </select>
+                        <input type="hidden" name="formId"  value= {{course._id}} />
+                        <button type="submit" class="btn btn-sm btn-primary">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{/if}}
+    {{/each}}
+    <h3>Mes courses passés </h3>
+    {{#each course in mesCourses}}
+    {{#if equals course.ownerId currentUser._id}}
+    {{#if equals course.vadidOrNot 'valider'}}
+    {{#if  course.vomiOrNot  }}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{course.depart_city}} => {{course.dest_city}} </h4>
+                <h6 class="card-title">{{course.depart_address}} => {{course.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{course.date}} // Heure: {{course.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{course.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{course.ownerId}}" class="card-link">{{course.ownerPseudo}}</a></p>
+                   <p>Acceptée par:<a href="/otherUser/{{course.samId}}" class="card-link">{{course.samPseudo}}</a></p> 
+                </p>
+                
+                <form action="" class="js-valid-life">
+                    <div class="form-group ">
+                        <h1> Mettre une note</h1>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
         {{/if}}
     {{/each}}
 </template> 
