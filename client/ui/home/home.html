@@ -8,3 +8,16 @@
     {{/if}}
     <!-- <img border="0" height="100%" hspace="0" src="/images/SAM.png" width="100%" /> -->
 </template>
+<template name="home">
+   
+    <!-- {{#unless loggingIn}} -->
+    {{#if equals currentUser.profile.SamOrNot "sam" }} 
+    {{> sam_board_display}}
+    {{/if}}
+    {{#if equals currentUser.profile.SamOrNot "passager" }}
+    {{> needSamForm}}
+    {{/if}}
+    
+    <!-- {{/unless}} -->
+    <!-- <img border="0" height="100%" hspace="0" src="/images/SAM.png" width="100%" /> -->
+</template>
