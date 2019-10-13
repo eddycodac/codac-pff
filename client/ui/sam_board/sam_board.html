@@ -13,7 +13,10 @@
                 <p>Demande faite par: <a href="/otherUser/{{formNeedSam.ownerId}}" class="card-link">{{formNeedSam.ownerPseudo}}</a></p>
                 <p>Commande numéro: {{formNeedSam._id}}</p>
             </div>
-            <button class="btn btn-success my-2 js-keepUser">Prendre la course</button>
+            <form action="" class="js-keepUser" >
+                <input type="hidden" name="formId"  value= {{formNeedSam._id}} />
+                <button type="submit"  class="btn btn-success my-2 ">Prendre la course</button>
+            </form>
         </div>        
     {{/each}}
 </template>

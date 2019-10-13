@@ -128,7 +128,21 @@ Meteor.methods({
             samPseudo:  Meteor.user().username
         }
         Match.update({cardId: Match.cardId}, {$set: matchInfo})
-        
+    },
+
+    updateMatch2(formId) {
+        check(formId, {
+            formId: String
+        })
+       let Id = formId.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let matchInfo = {
+            samId: this.userId,
+            samPseudo:  Meteor.user().username
+        }
+        FormNeedSam.update({_id: Id}, {$set: matchInfo})
     },
 
     updateUserProfil(profil) {
