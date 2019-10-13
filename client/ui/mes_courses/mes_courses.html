@@ -1,7 +1,7 @@
 <template name="mesCourses">
     <h3>Mes courses en attentes </h3>
     {{#each course in mesCourses}}
-    {{#if non equals course.vadidOrNot 'valider'}}
+    {{#unless equals course.vadidOrNot 'valider'}}
     {{#if equals course.samId currentUser._id}}
         <div class="card mb-2">
             <div class="card-body">
@@ -17,7 +17,7 @@
             </div>
         </div>
         {{/if}}
-        {{/if}}
+        {{/unless}}
     {{/each}}
     <h3>Mes courses validés </h3>
     {{#each course in mesCourses}}
