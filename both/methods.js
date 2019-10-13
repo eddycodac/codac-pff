@@ -294,7 +294,47 @@ Meteor.methods({
         FormNeedSam.update({_id: Id}, {$set: validation})
      if(valid.vomiOrNot == 'yes')
     FormNeedSam.update({_id: Id}, {$set: sendFlower})
-    }
+    },
+
+    updateUserProfilByAdmin(adminSetUp){
+        check(adminSetUp, {
+            SamOrNot: String,
+            samValid: String,
+            userId: String,
+            banned: String,
+            // unBan: String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let Id = adminSetUp.userId
+        let SamOrNotUpdate = {
+            "profile.SamOrNot": adminSetUp.SamOrNot
+        }
+        let samValidUpdate = {
+            "profile.samValid": adminSetUp.samValid
+        }
+        let bannedUpdate = {
+            "profile.banned": adminSetUp.banned
+        }
+        // let unBanUpdate = {
+        //     "profile.banned": adminSetUp.unBan
+        // }
+        if (adminSetUp.SamOrNot){
+            Meteor.users.update({_id: Id}, {$set: SamOrNotUpdate})
+        }
+        if (adminSetUp.samValid){
+            Meteor.users.update({_id: Id}, {$set: samValidUpdate})
+        }
+        if (adminSetUp.banned){
+            Meteor.users.update({_id: Id}, {$set: bannedUpdate})
+        }
+        // if (adminSetUp.unBan){
+        //     Meteor.users.update({_id: Id}, {$set: unBanUpdate})
+        // }
+        
+    }  
+
 })
 
 
