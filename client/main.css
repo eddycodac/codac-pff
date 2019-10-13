@@ -79,6 +79,7 @@
     text-align: left;
     color: #525f7f;
     background-color: #f8f9fe;
+    padding-bottom: 40px;
     }
     
     [tabindex='-1']:focus {
