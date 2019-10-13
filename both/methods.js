@@ -273,6 +273,27 @@ Meteor.methods({
     }
     else if(valid.lifeOrNot == 'no')
     FormNeedSam.update({_id: Id}, {$set: killSam})
+    },
+
+    updateVomiOrNot(valid) {
+        check(valid, {
+            vomiOrNot: String,
+            formId: String
+        })
+    
+       let Id = valid.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let validation = {
+            vomiOrNot: valid.vomiOrNot,
+        }
+        let sendFlower ={
+            sendFlower: 'true'
+        }
+        FormNeedSam.update({_id: Id}, {$set: validation})
+     if(valid.vomiOrNot == 'yes')
+    FormNeedSam.update({_id: Id}, {$set: sendFlower})
     }
 })
 
