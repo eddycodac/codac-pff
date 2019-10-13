@@ -23,7 +23,9 @@ Template.sam_board_display.events({
         let formId = event.target.formId.value
         Meteor.call('updateMatch2', { formId: formId }, function(err, res){
             if(!err) {
+                FlowRouter.go('/mesCourses') 
             }
          })
+         
     }    
 })

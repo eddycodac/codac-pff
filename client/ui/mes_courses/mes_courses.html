@@ -1,6 +1,7 @@
 <template name="mesCourses">
     <h3>Mes courses en attentes </h3>
     {{#each course in mesCourses}}
+    {{#if non equals course.vadidOrNot 'valider'}}
     {{#if equals course.samId currentUser._id}}
         <div class="card mb-2">
             <div class="card-body">
@@ -15,6 +16,7 @@
                 </p>
             </div>
         </div>
+        {{/if}}
         {{/if}}
     {{/each}}
     <h3>Mes courses validés </h3>
@@ -52,9 +54,9 @@
     {{/each}}
     <h3>Mes courses passés </h3>
     {{#each course in mesCourses}}
-    {{#if equals course.ownerId currentUser._id}}
-    {{#if equals course.vadidOrNot 'valider'}}
-    {{#if  course.vomiOrNot  }}
+    {{#if equals course.samId currentUser._id}}
+    {{#if equals course.vadidOrNot 'valider'}} 
+    {{#if  course.vomiOrNot }}
         <div class="card mb-2">
             <div class="card-body">
                 <h4 class="card-title">{{course.depart_city}} => {{course.dest_city}} </h4>
