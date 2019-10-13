@@ -250,6 +250,29 @@ Meteor.methods({
     }
     else if(valid.vadidOrNot == 'annuler')
     FormNeedSam.update({_id: Id}, {$set: killSam})
+    },
+
+    updateLifeOrNot(valid) {
+        check(valid, {
+            lifeOrNot: String,
+            formId: String
+        })
+    
+       let Id = valid.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let validation = {
+            lifeOrNot: valid.lifeOrNot,
+        }
+        let killSam ={
+            callPolice: 'true'
+        }
+        if (valid.lifeOrNot == 'yes'){
+        FormNeedSam.update({_id: Id}, {$set: validation})
+    }
+    else if(valid.lifeOrNot == 'no')
+    FormNeedSam.update({_id: Id}, {$set: killSam})
     }
 })
 

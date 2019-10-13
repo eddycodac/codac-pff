@@ -22,6 +22,23 @@ Template.mesTrajets.events({
                event.target.vadidOrNot.value = ''
             }
         })
+    },
+    'submit .js-valid-life'(event, instance){
+        event.preventDefault()
+        let lifeOrNot = event.target.lifeOrNot.value
+        let formId = event.target.formId.value
+        Meteor.call('updateLifeOrNot', {
+            lifeOrNot: lifeOrNot,
+            formId: formId
+        },function(err, res){
+            if(!err) {
+               event.target.lifeOrNot.value = ''
+            }
+        })
+
     }
+
 })
+
+
 

@@ -88,9 +88,9 @@
                    <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
                 </p>
                 
-                <form action="" class="js-valid-traject">
+                <form action="" class="js-valid-life">
                     <div class="form-group ">
-                        <select class="custom-select " name="vadidOrNot">
+                        <select class="custom-select " name="lifeOrNot">
                             <option selected  >? Arriver en vie ?</option>
                             <option value="yes">Oui</option>
                             <option value="no">Non</option>
@@ -106,5 +106,33 @@
         {{/if}}
     {{/each}}
     <h3>Mes trajets finis </h3>
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+    {{#if equals trajet.vadidOrNot 'valider'}}
+    {{#if equals trajet.lifeOrNot 'yes' }}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+                <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{trajet.date}} // Heure: {{trajet.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>
+                   <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
+                </p>
+                
+                <form action="" class="js-valid-life">
+                    <div class="form-group ">
+                        <h1> Mettre une note</h1>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{/if}}
+    {{/each}}
 
 </template>
