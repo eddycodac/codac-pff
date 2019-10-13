@@ -1,7 +1,24 @@
 <template name="mesTrajets">
-    <h1>Mes trajets </h1>
+    <h3>Mes trajets en attente </h3>
     {{#each trajet in mesTrajets}}
     {{#if equals trajet.ownerId currentUser._id}}
+    {{#if equals trajet.samId  undefined }}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+            <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+            <p class="card-subtitle text-muted">
+                Date: {{trajet.date}} // Heure: {{trajet.time}}
+            </p>
+            <p class="card-subtitle text-muted">
+                Nombre de Passagers: {{trajet.passager_number}}<br>
+                <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>                   
+            </p>
+        </div>
+    </div>
+    {{/if}}
+    {{#if equals trajet.samId  '' }}
+    
         <div class="card mb-2">
             <div class="card-body">
                 <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
@@ -10,11 +27,118 @@
                     Date: {{trajet.date}} // Heure: {{trajet.time}}
                 </p>
                 <p class="card-subtitle text-muted">
-                    Nombre de Passagers: {{trajet.passager_number}}
-                    <a href="#" class="card-link">{{trajet.ownerPseudo}}</a>
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>                   
                 </p>
             </div>
         </div>
         {{/if}}
+        {{/if}}
     {{/each}}
+    <h3>Mes trajets à valider </h3>
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+    {{#if non equals trajet.vadidOrNot 'valider'}}
+    {{#if trajet.samId }}
+    
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+                <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{trajet.date}} // Heure: {{trajet.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>
+                   <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
+                </p>
+                
+                <form action="" class="js-valid-traject">
+                    <div class="form-group ">
+                        <select class="custom-select " name="vadidOrNot">
+                            <option selected  >? Valider Trajet ?</option>
+                            <option value="valider">Valider</option>
+                            <option value="annuler">Annuler</option>
+                        </select>
+                        <input type="hidden" name="formId"  value= {{trajet._id}} />
+                        <button type="submit" class="btn btn-sm btn-primary">Valider / Annuler</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{/if}}
+    {{/each}}
+    <h3>Mes trajets a venir </h3>
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+    {{#if non equals trajet.lifeOrNot 'yes' }}
+    {{#if equals trajet.vadidOrNot 'valider'}}
+    {{#if trajet.samId }}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+                <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{trajet.date}} // Heure: {{trajet.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>
+                   <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
+                </p>
+                
+                <form action="" class="js-valid-life">
+                    <div class="form-group ">
+                        <select class="custom-select " name="lifeOrNot">
+                            <option selected  >? Arriver en vie ?</option>
+                            <option value="yes">Oui</option>
+                            <option value="no">Non</option>
+                        </select>
+                        <input type="hidden" name="formId"  value= {{trajet._id}} />
+                        <button type="submit" class="btn btn-sm btn-primary">Valider </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+        <!-- {{#else}}
+        <H1> Vous êtes mort nous vous envoyons la PJ</H1>
+        {{/else}} -->
+        {{/if}}
+        {{/if}}
+        {{/if}}
+    {{/each}}
+    <h3>Mes trajets finis </h3>
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+    {{#if equals trajet.vadidOrNot 'valider'}}
+    {{#if equals trajet.lifeOrNot 'yes' }}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+                <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{trajet.date}} // Heure: {{trajet.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>
+                   <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
+                </p>
+                
+                <form action="" class="js-valid-life">
+                    <div class="form-group ">
+                        <h1> Mettre une note</h1>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+        {{/if}}
+    {{/each}}
+
 </template>

@@ -8,18 +8,24 @@ import { userInfo } from 'os'
 
 Template.sam_board_display.helpers({
    request(){ 
-       return FormNeedSam.find().fetch()
+       return FormNeedSam.find({}, {sort: {createdAt: -1}}).fetch()
    },
    matchs(){ 
-    return Match.find().fetch()
+    return Match.find({}, {sort: {createdAt: -1}}).fetch()
 }
   
 })
 
 
 Template.sam_board_display.events({
-    'click .js-keepUser'(event, instance){
-        Meteor.call('updateMatch')
-        
+    'submit .js-keepUser'(event, instance){
+        event.preventDefault()
+        let formId = event.target.formId.value
+        Meteor.call('updateMatch2', { formId: formId }, function(err, res){
+            if(!err) {
+                FlowRouter.go('/mesCourses') 
+            }
+         })
+         
     }    
 })

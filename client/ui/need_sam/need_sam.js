@@ -38,5 +38,16 @@ Template.needSamForm.events({
         })
         Meteor.call('insertMatch')
         FlowRouter.go('/mesTrajets') 
+    },
+
+    'reset .js-annuler-demand'(event, instance){
+        event.preventDefault()
+        event.target.depart_address = ''
+        event.target.dest_address = ''
+        event.target.the_date = ''
+        event.target.wakeup = ''
+        event.target.dest_city = ''
+        event.target.depart_city = ''
+        event.target.passager_number = ''
     }
 })
