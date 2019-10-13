@@ -5,7 +5,7 @@ import './mesTrajets.html'
 
 Template.mesTrajets.helpers({
     mesTrajets() {
-        return FormNeedSam.find().fetch()
+        return FormNeedSam.find({}, {sort: {createdAt: -1}}).fetch()
     }
 })
 

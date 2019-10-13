@@ -8,10 +8,10 @@ import { userInfo } from 'os'
 
 Template.sam_board_display.helpers({
    request(){ 
-       return FormNeedSam.find().fetch()
+       return FormNeedSam.find({}, {sort: {createdAt: -1}}).fetch()
    },
    matchs(){ 
-    return Match.find().fetch()
+    return Match.find({}, {sort: {createdAt: -1}}).fetch()
 }
   
 })
