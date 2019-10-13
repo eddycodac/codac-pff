@@ -26,9 +26,16 @@
 <template name="bottomNav">
         <div class="fixed-bottom">
             <ul class="nav justify-content-center navbar navbar-dark bg-dark">
-                    <li class="nav-item">
+                {{#if equals currentUser.profile.SamOrNot "sam" }}    
+                <li class="nav-item">
+                            <a class="nav-link" href="/sam_board_display">Courses</a>
+                        </li>
+                {{/if}}
+                {{#if equals currentUser.profile.SamOrNot "passager" }} 
+                <li class="nav-item">
                         <a class="nav-link" href="/mesTrajets">Trajets</a>
-                    </li>
+                </li>
+                {{/if}}
                     <li class="nav-item">
                         <a class="nav-link" href="/">Accueil</a>
                     </li>
