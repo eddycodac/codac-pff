@@ -54,7 +54,6 @@
                             <span class="description">Trajets</span>
                           </div>
                           <div>
-                            <!-- <p>{{>starsRating mutable=true class="js-rate-image" id=_id}}</p> -->
                             <span class="heading">9</span>
                             <span class="description">Note</span>
                           </div>   
@@ -64,7 +63,9 @@
                     <div class="text-center">
                       <h3>
                           {{allUser.username}}<span class="font-weight-light"><br></span>
+                         
                       </h3>
+                      
                       <div class="h5 font-weight-300">
                         <i class="ni location_pin mr-2"></i>{{allUser.profile.address}}
                       </div>
@@ -78,6 +79,7 @@
                         <i class="ni education_hat mr-2"></i>Ton camps: {{allUser.profile.SamOrNot}}
                       </div>
                       <hr class="my-4" />
+                      <p>{{>starsRating mutable=true class="starsCenter js-rate-image" id=_id}}</p>
                       <!-- <p>
                         Ryan — the name taken by Melbourne-raised, Brooklyn-based
                         Nick Murphy — writes, performs and records all of his own
