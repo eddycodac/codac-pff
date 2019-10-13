@@ -1,7 +1,9 @@
 <template name="mesTrajets">
-    <h1>Mes trajets </h1>
+    <h3>Mes trajets en attente </h3>
     {{#each trajet in mesTrajets}}
     {{#if equals trajet.ownerId currentUser._id}}
+    {{#if equals trajet.samId undefined }}
+    
         <div class="card mb-2">
             <div class="card-body">
                 <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
@@ -10,11 +12,36 @@
                     Date: {{trajet.date}} // Heure: {{trajet.time}}
                 </p>
                 <p class="card-subtitle text-muted">
-                    Nombre de Passagers: {{trajet.passager_number}}
-                    <a href="#" class="card-link">{{trajet.ownerPseudo}}</a>
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>                   
                 </p>
             </div>
         </div>
         {{/if}}
+        {{/if}}
     {{/each}}
+    <h3>Mes trajets en cours </h3>
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+    {{#if trajet.samId }}
+    
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+                <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{trajet.date}} // Heure: {{trajet.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{trajet.passager_number}}<br>
+                   <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>
+                   <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
+                </p>
+            </div>
+        </div>
+        {{/if}}
+        {{/if}}
+    {{/each}}
+    <h3>Mes trajets finis </h3>
+
 </template>

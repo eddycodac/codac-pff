@@ -1,0 +1,20 @@
+<template name="mesCourses">
+    <h1>Mes Courses </h1>
+    {{#each course in mesCourses}}
+    {{#if equals course.samId currentUser._id}}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h4 class="card-title">{{course.depart_city}} => {{course.dest_city}} </h4>
+                <h6 class="card-title">{{course.depart_address}} => {{course.dest_address}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{course.date}} // Heure: {{course.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{course.passager_number}}<br>
+                    <p>Crée par:<a href="/otherUser/{{course.ownerId}}" class="card-link">{{course.ownerPseudo}}</a></p> 
+                </p>
+            </div>
+        </div>
+        {{/if}}
+    {{/each}}
+</template> 
