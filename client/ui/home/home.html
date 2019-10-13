@@ -1,5 +1,10 @@
 <template name="home">
-    <button class="js-open-log-modal"><h1>Super Page Stylé</h1>
-    </button>
+
+    {{#if equals currentUser.profile.SamOrNot "sam" }} 
+    {{> sam_board_display}}
+    {{/if}}
+    {{#if equals currentUser.profile.SamOrNot "passager" }}
+    {{> needSamForm}}
+    {{/if}}
 
 </template>
