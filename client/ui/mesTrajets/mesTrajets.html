@@ -38,6 +38,7 @@
     <h3>Mes trajets à valider </h3>
     {{#each trajet in mesTrajets}}
     {{#if equals trajet.ownerId currentUser._id}}
+    {{#if non equals trajet.vadidOrNot 'valider'}}
     {{#if trajet.samId }}
     
         <div class="card mb-2">
@@ -68,13 +69,14 @@
         </div>
         {{/if}}
         {{/if}}
+        {{/if}}
     {{/each}}
     <h3>Mes trajets a venir </h3>
     {{#each trajet in mesTrajets}}
     {{#if equals trajet.ownerId currentUser._id}}
+    {{#if non equals trajet.lifeOrNot 'yes' }}
     {{#if equals trajet.vadidOrNot 'valider'}}
     {{#if trajet.samId }}
-    
         <div class="card mb-2">
             <div class="card-body">
                 <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
@@ -101,6 +103,10 @@
                 </form>
             </div>
         </div>
+        {{/if}}
+        <!-- {{#else}}
+        <H1> Vous êtes mort nous vous envoyons la PJ</H1>
+        {{/else}} -->
         {{/if}}
         {{/if}}
         {{/if}}
