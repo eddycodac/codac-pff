@@ -228,5 +228,30 @@ Meteor.methods({
             Meteor.users.update({_id: this.userId}, {$set: SamOrNotUpdate})
         }
     },
+    updateVadidOrNot(valid) {
+        check(valid, {
+            vadidOrNot: String,
+            formId: String
+        })
+    
+       let Id = valid.formId
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let validation = {
+            vadidOrNot: valid.vadidOrNot,
+        }
+        let killSam ={
+            samId: '',
+            samPseudo: ''
+        }
+        if (valid.vadidOrNot == 'valider'){
+        FormNeedSam.update({_id: Id}, {$set: validation})
+    }
+    else if(valid.vadidOrNot == 'annuler')
+    FormNeedSam.update({_id: Id}, {$set: killSam})
+    }
 })
+
+
 

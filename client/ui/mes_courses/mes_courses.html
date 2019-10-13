@@ -1,5 +1,5 @@
 <template name="mesCourses">
-    <h1>Mes Courses </h1>
+    <h3>Mes courses en attentes </h3>
     {{#each course in mesCourses}}
     {{#if equals course.samId currentUser._id}}
         <div class="card mb-2">
@@ -17,4 +17,7 @@
         </div>
         {{/if}}
     {{/each}}
+    <h3>Mes courses validés </h3>
+    <h3>Mes courses passés </h3>
+
 </template> 
