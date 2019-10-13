@@ -66,3 +66,9 @@ FlowRouter.route('/cgu',{
         BlazeLayout.render('layout', { main: 'cgu' })
     }
 })
+
+FlowRouter.route('/mesCourses',{
+    action(){
+        BlazeLayout.render('layout', { main: 'mesCourses' })
+    }
+})
