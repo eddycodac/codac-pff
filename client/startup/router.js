@@ -72,3 +72,9 @@ FlowRouter.route('/mesCourses',{
         BlazeLayout.render('layout', { main: 'mesCourses' })
     }
 })
+
+FlowRouter.route('/adminDashboard',{
+    action(){
+        BlazeLayout.render('layout', { main: 'adminDashboard' })
+    }
+})
