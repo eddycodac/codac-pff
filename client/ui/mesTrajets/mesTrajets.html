@@ -141,9 +141,13 @@
                    <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
                 </p>
                 
-                <form action="" class="js-valid-life">
+                <form action="" class="js-note">
                     <div class="form-group ">
-                        <h1> Mettre une note</h1>
+                        <h3> Note {{trajet.note}}/5</h3>
+                        <input type="number" name="note" max="5" min="1" id="">
+                        <input type="hidden" name="formId"  value= {{trajet._id}} />
+
+                        <button type="submit" class="btn btn-sm btn-primary">Valider </button>
                     </div>
                 </form>
             </div>

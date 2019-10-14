@@ -1,4 +1,4 @@
-import { MessagesClient, MessagesSam, FormNeedSam } from './collections'
+import { MessagesClient, MessagesSam, FormNeedSam , UserNote} from './collections'
 import { check } from 'meteor/check'
 import { Random } from 'meteor/random'
 import { stringify } from 'querystring'
@@ -352,6 +352,21 @@ Meteor.methods({
             Meteor.users.update({username: Pseudo}, {$inc: numberNotation})
         }
 
+    },
+    setNoteByPassager(note){check(note, {
+        note: String,
+        formId: String,
+    })
+
+    let Id = note.formId
+    if(!this.userId) {
+        throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+    }
+    let updateNote = {
+        note: note.note,
+    }
+    if(note.note)
+    FormNeedSam.update({_id: Id}, {$set: updateNote})
     }
 })
 

@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating'
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
-import { FormNeedSam } from '../../../both/collections'
+import { FormNeedSam, UserNote } from '../../../both/collections'
 import './mesTrajets.html'
 
 Template.mesTrajets.helpers({
@@ -35,7 +35,22 @@ Template.mesTrajets.events({
                event.target.lifeOrNot.value = ''
             }
         })
+    },
+    'submit .js-note'(event, instance){
+        event.preventDefault()
+        let note = event.target.note.value
+        let formId = event.target.formId.value
 
+        if (note > 0 && note < 6 ) {
+            Meteor.call('setNoteByPassager', {
+                note: note,
+                formId: formId
+            },function(err, res){
+                if(!err) {
+                    event.target.note.value = ''
+                }
+            })
+        }
     }
 
 })
