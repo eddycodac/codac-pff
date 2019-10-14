@@ -64,7 +64,7 @@
                 <form action="" class="js-valid-traject">
                     <div class="form-group ">
                         <select class="custom-select " name="vadidOrNot">
-                            <option value="" disabled selected  >Valider le Sam ?</option>
+                            <option value="" disabled selected  >Valider? Refuser? ou Annuler?</option>
                             <option value="valider">Valider</option>
                             <option value="refuser">Refuser</option>
                             <option value="annuler">Annuler</option>
@@ -103,7 +103,7 @@
                 <form action="" class="js-valid-life">
                     <div class="form-group ">
                         <select class="custom-select " name="lifeOrNot">
-                            <option value="" disabled selected  >? Arriver en vie ?</option>
+                            <option value="" disabled selected  >Etes-vous bien arrivé(e) ?</option>
                             <option value="yes">Oui</option>
                             <option value="no">Non</option>
                         </select>
@@ -141,9 +141,19 @@
                    <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
                 </p>
                 
-                <form action="" class="js-valid-life">
+                <form action="" class="js-note">
                     <div class="form-group ">
-                        <h1> Mettre une note</h1>
+                        <h3> Note {{trajet.notePassager}}/5</h3>
+                        <select class="custom-select " name="notePassager">
+                                <option value="5" selected>5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                        <input type="hidden" name="formId"  value= {{trajet._id}} />
+
+                        <button type="submit" class="btn btn-sm btn-primary">Valider </button>
                     </div>
                 </form>
             </div>

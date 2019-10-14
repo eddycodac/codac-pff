@@ -1,4 +1,4 @@
-import { MessagesClient, MessagesSam, FormNeedSam } from './collections'
+import { MessagesClient, MessagesSam, FormNeedSam , UserNote} from './collections'
 import { check } from 'meteor/check'
 import { Random } from 'meteor/random'
 import { stringify } from 'querystring'
@@ -328,6 +328,38 @@ Meteor.methods({
         // }
         
     },
+    updateUserProfilByAdmin2(adminSetUp){
+        check(adminSetUp, {
+            SamOrNot: String,
+            userId: String,
+            banned: String,
+            // unBan: String
+        })
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let Id = adminSetUp.userId
+        let SamOrNotUpdate = {
+            "profile.SamOrNot": adminSetUp.SamOrNot
+        }
+        let bannedUpdate = {
+            "profile.banned": adminSetUp.banned
+        }
+        // let unBanUpdate = {
+        //     "profile.banned": adminSetUp.unBan
+        // }
+        if (adminSetUp.SamOrNot){
+            Meteor.users.update({_id: Id}, {$set: SamOrNotUpdate})
+        }
+        
+        if (adminSetUp.banned){
+            Meteor.users.update({_id: Id}, {$set: bannedUpdate})
+        }
+        // if (adminSetUp.unBan){
+        //     Meteor.users.update({_id: Id}, {$set: unBanUpdate})
+        // }
+        
+    },
     updateNote(Note) {
         check(Note, {
             Note: Number,
@@ -352,6 +384,37 @@ Meteor.methods({
             Meteor.users.update({username: Pseudo}, {$inc: numberNotation})
         }
 
+    },
+    setNoteByPassager(note){check(note, {
+        notePassager: String,
+        formId: String,
+    })
+    
+    let Id = note.formId
+    if(!this.userId) {
+        throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+    }
+    let updateNotePassager = {
+        notePassager: note.notePassager
+    }
+    if(note.notePassager)
+    FormNeedSam.update({_id: Id}, {$set: updateNotePassager})
+    },
+
+    setNoteBySam(note){check(note, {
+        noteSam: String,
+        formId: String,
+    })
+    
+    let Id = note.formId
+    if(!this.userId) {
+        throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+    }
+    let updateNoteSam = {
+        noteSam: note.noteSam
+    }
+    if(note.noteSam)
+    FormNeedSam.update({_id: Id}, {$set: updateNoteSam})
     }
 })
 

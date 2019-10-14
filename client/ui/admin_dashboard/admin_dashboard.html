@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <form action="" class="js-form-set-admin">
                                 <select class="custom-select js-change-is-admin" name="setAdmin">
-                                    <option value="" disabled selected  >? Admin ?</option>
+                                    <option value="" disabled selected  >Changer en Admin ?</option>
                                     <option value="admin">Oui</option>
                                     <option value="notAdmin">Non</option>
                                 </select>
@@ -98,7 +98,7 @@
                         Il n'est pas banni
                         <div class="form-group">
                             <select class="custom-select js-ban-admin" name="banned">
-                                <option value="" disabled selected  >? Bannir ?</option>
+                                <option value="" disabled selected  > Bannir l'utilisateur ?</option>
                                 <option value="baned">Oui</option>
                             </select>
                         </div>
@@ -115,7 +115,7 @@
                         Sam Validé: {{ user.profile.valid }}
                         <div class="form-group">
                             <select class="custom-select js-sam-valid-by-admin" name="samValid">
-                                <option value="" disabled selected  >? Valider ?</option>
+                                <option value="" disabled selected  > Valider ce Sam ?</option>
                                 <option value="samValided">Oui</option>
                                 <option value="samUnvalided">Non</option>
 
@@ -140,6 +140,54 @@
         <div class="card mb-2">
                 <h5 class="card-title">pseudo: {{user.username}}</h5>
                 <div class="card-body">
+                    <form action="" class="js-update-user-by-admin2">
+                        <div class="form-group">
+                            <label class="form-control-label" for="js-change-sam-or-not-admin" 
+                            >Il est: {{ user.profile.SamOrNot }}</label
+                            >
+                            <select class="custom-select js-change-sam-or-not-admin" name="SamOrNot2">
+                                <option value="" disabled selected  >Changer son camps</option>
+                                <option value="sam">Sam</option>
+                                <option value="passager">Passager</option>
+                                <!-- <option value="both">Les Deux</option> -->
+                            </select>
+                        </div>
+                            {{#if equals user.profile.baned undefined}}
+                            Il n'est pas banni
+                            <div class="form-group">
+                                <select class="custom-select js-ban-admin" name="banned2">
+                                    <option value="" disabled selected  >Le bannir ?</option>
+                                    <option value="true">Oui</option>
+                                </select>
+                            </div>
+                            <!-- {{else}}
+                            il est banni
+    
+                            <div class="form-group">
+                                <select class="custom-select js-unban-admin" name="unBan">
+                                    <option value="" disabled selected  >? Rétablir ?</option>
+                                    <option value="unbaned">Oui</option>
+                                </select>
+                            </div> -->
+                            {{/if}}
+                            
+                            <input type="hidden" name="userId2"  value= {{user._id}} />
+    
+                        <div class="col-6 text-right">
+                            <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{/unless}}
+            {{/if}}
+    {{/each}}
+    <h3>Liste des Bannis</h3>
+    {{#each user in users}}
+        {{#if equals user.profile.banned true }}
+        <div class="card mb-2">
+                <h5 class="card-title">pseudo: {{user.username}}</h5>
+                <div class="card-body">
                     <form action="" class="js-update-user-by-admin">
                         <div class="form-group">
                             <label class="form-control-label" for="js-change-sam-or-not-admin" 
@@ -149,15 +197,15 @@
                                 <option value="" disabled selected  >Changer son camps</option>
                                 <option value="sam">Sam</option>
                                 <option value="passager">Passager</option>
-                                <!-- <option value="">Les Deux</option> -->
+                                <option value="both">Les Deux</option>
                             </select>
                         </div>
                             {{#if equals user.profile.baned undefined}}
                             Il n'est pas banni
                             <div class="form-group">
                                 <select class="custom-select js-ban-admin" name="banned">
-                                    <option value="" disabled selected  >? Bannir ?</option>
-                                    <option value="true">Oui</option>
+                                    <option value="" disabled selected  >Le bannir ?</option>
+                                    <option value="baned">Oui</option>
                                 </select>
                             </div>
                             <!-- {{else}}
@@ -179,11 +227,7 @@
                     </form>
                 </div>
             </div>
-            {{/unless}}
             {{/if}}
-    {{/each}}
-    <h3>Liste des Bannis</h3>
-    {{#each user in users}}
     {{#if user.profile.banned  }}
     <div class="card mb-2">
         <h4 class="card-title">pseudo: {{user.username}}</h4>
