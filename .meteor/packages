@@ -10,6 +10,7 @@ mongo@1.6.2                   # The database Meteor supports right now
 blaze-html-templates@1.0.4 # Compile .html files into Meteor Blaze views
 reactive-var@1.0.11            # Reactive variable for tracker
 tracker@1.2.0                 # Meteor's client-side reactive programming library
+insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 
 standard-minifier-css@1.5.3   # CSS minifier run for production mode
 standard-minifier-js@2.4.1    # JS minifier run for production mode
@@ -18,7 +19,6 @@ ecmascript@0.12.4              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.4.0            # Server-side component of the `meteor shell` command
 
 autopublish@1.0.7             # Publish all data to the clients (for prototyping)
-insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 alexwine:bootstrap-4
 accounts-password
 accounts-facebook
@@ -29,4 +29,8 @@ ostrio:flow-router-extra
 kadira:blaze-layout
 service-configuration
 accounts-ui
-
+check
+audit-argument-checks
+session
+random
+barbatus:stars-rating

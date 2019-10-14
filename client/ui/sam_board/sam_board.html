@@ -1,0 +1,30 @@
+<template name = "sam_board_display" >
+{{#unless currentUser.profile.banned  }}
+{{#if equals currentUser.profile.SamOrNot 'sam'}}
+    <h3>Liste des demandes</h3>
+    {{#each formNeedSam in request }}
+    {{#unless  formNeedSam.samId  }}
+
+        <div class="card mb-2 ">
+            <div class="card-body">
+                <h6 class="card-title">{{formNeedSam.depart_city}} => {{formNeedSam.dest_city}} </h6>
+                <p class="card-subtitle text-muted">
+                    Date: {{formNeedSam.date}} // Heure: {{formNeedSam.time}}
+                </p>
+                <p class="card-subtitle text-muted">
+                    Nombre de Passagers: {{formNeedSam.passager_number}}
+                </p>
+                <p>Demande faite par: <a href="/otherUser/{{formNeedSam.ownerId}}" class="card-link">{{formNeedSam.ownerPseudo}}</a></p>
+                <p>Commande numéro: {{formNeedSam._id}}</p>
+            </div>
+            <form action="" class="js-keepUser" >
+                <input type="hidden" name="formId"  value= {{formNeedSam._id}} />
+                <button type="submit"  class="btn btn-success my-2 ">Prendre la course</button>
+            </form>
+        </div>    
+        {{/unless}}    
+    {{/each}}
+{{/if}}
+{{/unless}}
+
+</template>

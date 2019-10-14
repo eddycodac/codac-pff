@@ -81,10 +81,6 @@ AccountsTemplates.addField({
     displayName: "Sam ou Passager",
     select: [
         {
-            text: "Les Deux",
-            value: "both",
-        },
-        {
             text: "Sam",
             value: "sam",
         },
@@ -103,4 +99,3 @@ AccountsTemplates.addField({
     displayName: "J’accepte les conditions générales d’utilisation du service.",
     
 });
-
