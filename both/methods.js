@@ -264,6 +264,24 @@ Meteor.methods({
     FormNeedSam.update({_id: Id}, {$set: sendFlower})
     },
 
+    updateIsAdmin(youlou) {
+        check(youlou, {
+            setAdmin: String,
+            userId1: String
+        })
+
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let Id = youlou.userId1
+        let adminUpdate = {
+            "profile.isAdmin": youlou.setAdmin
+        }
+     
+            Meteor.users.update({_id: Id}, {$set: adminUpdate})
+        
+    },
+
     updateUserProfilByAdmin(adminSetUp){
         check(adminSetUp, {
             SamOrNot: String,

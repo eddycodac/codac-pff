@@ -6,6 +6,14 @@ Template.adminDashboard.helpers({
     }
 })
 
+// Template.superAdminPanel.helpers({
+//     users2() {
+//         return Meteor.users.find({}, {sort: {createdAt: -1}}).fetch()
+//     }
+// })
+
+
+
 Template.adminDashboard.events({
     'submit .js-update-user-by-admin'(event, instance){
         event.preventDefault()
@@ -27,11 +35,45 @@ Template.adminDashboard.events({
             event.target.SamOrNot.value = ''
             event.target.banned.value = ''
             event.target.unBan.value = ''
-            event.target.userId.value = ''
             event.target.samValid.value = ''
 
             }    
         })   
     },
-        
+    'submit .js-form-set-admin'(event, instance){
+        event.preventDefault()
+
+        let setAdmin = event.target.setAdmin.value 
+        let userId1 = event.target.userId1.value
+
+        Meteor.call('updateIsAdmin', {
+            setAdmin: setAdmin,          
+            userId1: userId1
+            // unBan: unBan
+        }, function(err, res){
+            if(!err) {
+                event.target.setAdmin.value = ''    
+            }    
+        })   
+    }
 })
+
+// Template.superAdminPanel.events({
+//     'submit .js-form-set-admin'(event, instance){
+//         event.preventDefault()
+
+//         let setAdmin = event.target.setAdmin.value
+//         let userId1 = event.target.userId1.value
+
+//         Meteor.call('updateIsAdmin', {
+//             setAdmin: setAdmin,          
+//             userId1: userId1
+//             // unBan: unBan
+//         }, function(err, res){
+//             if(!err) {
+//                 event.target.userId1.value = ''     
+
+//             }    
+//         })   
+//     }
+// })
