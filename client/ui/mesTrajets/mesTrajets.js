@@ -38,16 +38,16 @@ Template.mesTrajets.events({
     },
     'submit .js-note'(event, instance){
         event.preventDefault()
-        let note = event.target.note.value
+        let notePassager = event.target.notePassager.value
         let formId = event.target.formId.value
 
-        if (note > 0 && note < 6 ) {
+        if (notePassager > 0 && notePassager < 6 ) {
             Meteor.call('setNoteByPassager', {
-                note: note,
+                notePassager: notePassager,
                 formId: formId
             },function(err, res){
                 if(!err) {
-                    event.target.note.value = ''
+                    event.target.notePassager.value = ''
                 }
             })
         }

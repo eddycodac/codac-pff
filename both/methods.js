@@ -354,19 +354,19 @@ Meteor.methods({
 
     },
     setNoteByPassager(note){check(note, {
-        note: String,
+        notePassager: String,
         formId: String,
     })
-
+    
     let Id = note.formId
     if(!this.userId) {
         throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
     }
-    let updateNote = {
-        note: note.note,
+    let updateNotePassager = {
+        notePassager: note.notePassager,
     }
-    if(note.note)
-    FormNeedSam.update({_id: Id}, {$set: updateNote})
+    if(note.notePassager)
+    FormNeedSam.update({_id: Id}, {$set: updateNotePassager})
     }
 })
 

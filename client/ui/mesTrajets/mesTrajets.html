@@ -143,8 +143,14 @@
                 
                 <form action="" class="js-note">
                     <div class="form-group ">
-                        <h3> Note {{trajet.note}}/5</h3>
-                        <input type="number" name="note" max="5" min="1" id="">
+                        <h3> Note {{trajet.notePassager}}/5</h3>
+                        <select class="custom-select " name="notePassager">
+                                <option value="5" selected>5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
                         <input type="hidden" name="formId"  value= {{trajet._id}} />
 
                         <button type="submit" class="btn btn-sm btn-primary">Valider </button>
