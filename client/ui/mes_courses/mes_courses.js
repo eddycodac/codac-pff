@@ -24,18 +24,35 @@ Template.mesCourses.events({
         })
 
     },
-    'submit .js-note-passager'(event, instance){
+    // 'submit .js-note-passager'(event, instance){
+    //     event.preventDefault()
+    //     let Note = Number(event.target.Note.value)
+    //     let ownerPseudo = event.target.ownerPseudo.value
+    //     Meteor.call('updateNote', {
+    //         Note: Note,
+    //         ownerPseudo: ownerPseudo
+    //     },function(err, res){
+    //         if(!err) {
+    //         event.target.Note.value = ''
+    //         event.target.ownerPseudo.value = ''
+    //         }
+    //     })
+    // }
+    'submit .js-note-sam'(event, instance){
         event.preventDefault()
-        let Note = Number(event.target.Note.value)
-        let ownerPseudo = event.target.ownerPseudo.value
-        Meteor.call('updateNote', {
-            Note: Note,
-            ownerPseudo: ownerPseudo
-        },function(err, res){
-            if(!err) {
-            event.target.Note.value = ''
-            event.target.ownerPseudo.value = ''
-            }
-        })
+        let noteSam = event.target.noteSam.value
+        let formId = event.target.formId.value
+
+        if (noteSam > 0 && noteSam < 6 ) {
+            Meteor.call('setNoteBySam', {
+                noteSam: noteSam,
+                formId: formId
+            },function(err, res){
+                if(!err) {
+                    event.target.noteSam.value = ''
+                }
+            })
+        }
     }
+
 })
