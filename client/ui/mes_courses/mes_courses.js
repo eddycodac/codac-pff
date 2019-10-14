@@ -23,5 +23,19 @@ Template.mesCourses.events({
             }
         })
 
+    },
+    'submit .js-note-passager'(event, instance){
+        event.preventDefault()
+        let Note = Number(event.target.Note.value)
+        let ownerPseudo = event.target.ownerPseudo.value
+        Meteor.call('updateNote', {
+            Note: Note,
+            ownerPseudo: ownerPseudo
+        },function(err, res){
+            if(!err) {
+            event.target.Note.value = ''
+            event.target.ownerPseudo.value = ''
+            }
+        })
     }
 })

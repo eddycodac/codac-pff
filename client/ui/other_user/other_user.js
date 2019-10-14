@@ -1,11 +1,15 @@
 import { Template } from 'meteor/templating'
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra'
 import './other_user.html'
+import { notEqual } from 'assert'
 
 Template.otherUser.helpers({
     allUser(){
         return Meteor.users.findOne({_id: FlowRouter.getParam('otherUserId')})
-    }
+    },
+    // Note(){
+    //     let NoteFinal = Meteor.users.findOne('_id': "current._id")
+    // }
 })
 
 //---------------------- Afficher un rating star, non enregistré en bdd ---------------------
