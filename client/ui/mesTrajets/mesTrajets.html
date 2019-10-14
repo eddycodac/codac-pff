@@ -2,6 +2,7 @@
     <h3>Mes trajets en attente </h3>
     {{#each trajet in mesTrajets}}
     {{#if equals trajet.ownerId currentUser._id}}
+    {{#unless trajet.canceled }}
     {{#if equals trajet.samId  undefined }}
     <div class="card mb-2">
         <div class="card-body">
@@ -33,6 +34,7 @@
             </div>
         </div>
         {{/if}}
+        {{/unless}}
         {{/if}}
     {{/each}}
     <h3>Mes trajets à valider </h3>
@@ -40,6 +42,8 @@
     {{#if equals trajet.ownerId currentUser._id}}
     {{#unless equals trajet.vadidOrNot 'valider'}}
     {{#if trajet.samId }}
+    {{#unless trajet.canceled }}
+
     
         <div class="card mb-2">
             <div class="card-body">
@@ -57,8 +61,9 @@
                 <form action="" class="js-valid-traject">
                     <div class="form-group ">
                         <select class="custom-select " name="vadidOrNot">
-                            <option value="" disabled selected  >? Valider Trajet ?</option>
+                            <option value="" disabled selected  >Valider le Sam ?</option>
                             <option value="valider">Valider</option>
+                            <option value="refuser">Refuser</option>
                             <option value="annuler">Annuler</option>
                         </select>
                         <input type="hidden" name="formId"  value= {{trajet._id}} />
@@ -67,6 +72,7 @@
                 </form>
             </div>
         </div>
+        {{/unless}}
         {{/if}}
         {{/unless}}
         {{/if}}
@@ -77,6 +83,7 @@
     {{#unless equals trajet.lifeOrNot 'yes' }}
     {{#if equals trajet.vadidOrNot 'valider'}}
     {{#if trajet.samId }}
+    {{#unless trajet.canceled }}
         <div class="card mb-2">
             <div class="card-body">
                 <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
@@ -103,6 +110,7 @@
                 </form>
             </div>
         </div>
+        {{/unless}}
         {{/if}}
         <!-- {{#else}}
         <H1> Vous êtes mort nous vous envoyons la PJ</H1>
@@ -116,6 +124,7 @@
     {{#if equals trajet.ownerId currentUser._id}}
     {{#if equals trajet.vadidOrNot 'valider'}}
     {{#if equals trajet.lifeOrNot 'yes' }}
+    {{#unless trajet.canceled }}
         <div class="card mb-2">
             <div class="card-body">
                 <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
@@ -136,9 +145,38 @@
                 </form>
             </div>
         </div>
+        {{/unless}}
         {{/if}}
         {{/if}}
         {{/if}}
     {{/each}}
+
+    {{#each trajet in mesTrajets}}
+    {{#if equals trajet.ownerId currentUser._id}}
+    {{#if trajet.canceled }}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h4 class="card-title">{{trajet.depart_city}} => {{trajet.dest_city}} </h4>
+            <h6 class="card-title">{{trajet.depart_address}} => {{trajet.dest_address}} </h6>
+            <p class="card-subtitle text-muted">
+                Date: {{trajet.date}} // Heure: {{trajet.time}}
+            </p>
+            <p class="card-subtitle text-muted">
+                Nombre de Passagers: {{trajet.passager_number}}<br>
+               <p>Crée par:<a href="/otherUser/{{trajet.ownerId}}" class="card-link">{{trajet.ownerPseudo}}</a></p>
+               <p>Acceptée par:<a href="/otherUser/{{trajet.samId}}" class="card-link">{{trajet.samPseudo}}</a></p> 
+            </p>
+            
+            <form action="" class="js-valid-life">
+                <div class="form-group ">
+                    <h1> A été annulé</h1>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{/if}}
+    {{/if}}
+    {{/each}}
+
 
 </template>

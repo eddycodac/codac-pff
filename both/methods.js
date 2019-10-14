@@ -213,11 +213,19 @@ Meteor.methods({
             samId: '',
             samPseudo: ''
         }
+        let courseCancel = {
+            'canceled': true
+        }
+
         if (valid.vadidOrNot == 'valider'){
         FormNeedSam.update({_id: Id}, {$set: validation})
-    }
-    else if(valid.vadidOrNot == 'annuler')
-    FormNeedSam.update({_id: Id}, {$set: killSam})
+        }
+        else if(valid.vadidOrNot == 'refuser'){
+        FormNeedSam.update({_id: Id}, {$set: killSam})
+        }
+        else{
+        FormNeedSam.update({_id: Id}, {$set: courseCancel})
+        }
     },
 
     updateLifeOrNot(valid) {
