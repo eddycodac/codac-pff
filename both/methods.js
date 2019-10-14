@@ -333,8 +333,32 @@ Meteor.methods({
         //     Meteor.users.update({_id: Id}, {$set: unBanUpdate})
         // }
         
-    }  
+    },
+    updateNote(Note) {
+        check(Note, {
+            Note: Number,
+            ownerPseudo: String
+        })
+    
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
 
+        let Pseudo = Note.ownerPseudo
+
+        let sommeNotation = {
+            "profile.sommeNote": Note.Note,
+        }
+        let numberNotation = {
+            "profile.numberNote": (Note.Note / Note.Note)
+        }
+
+        if (Note.Note){
+            Meteor.users.update({username: Pseudo}, {$inc: sommeNotation})
+            Meteor.users.update({username: Pseudo}, {$inc: numberNotation})
+        }
+
+    }
 })
 
 
