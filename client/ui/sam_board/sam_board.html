@@ -1,4 +1,6 @@
 <template name = "sam_board_display" >
+{{#unless currentUser.profile.banned  }}
+{{#if equals currentUser.profile.SamOrNot 'sam'}}
     <h3>Liste des demandes</h3>
     {{#each formNeedSam in request }}
     {{#unless  formNeedSam.samId  }}
@@ -22,4 +24,7 @@
         </div>    
         {{/unless}}    
     {{/each}}
+{{/if}}
+{{/unless}}
+
 </template>

@@ -31,7 +31,11 @@
                             <a class="nav-link" href="/mesCourses">Courses</a>
                         </li>
                 {{/if}}
-                
+                {{#if equals currentUser.profile.isAdmin "admin"}} 
+                <li class="nav-item">
+                        <a class="nav-link" href="/adminDashboard">Admin</a>
+                </li>
+                {{/if}}
                 {{#if equals currentUser.profile.SamOrNot "passager"}} 
                 <li class="nav-item">
                         <a class="nav-link" href="/mesTrajets">Trajets</a>

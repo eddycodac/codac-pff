@@ -78,6 +78,7 @@
     {{#each user in users}}
 
     {{#if equals user.profile.SamOrNot 'sam' }}
+    {{#unless user.profile.banned  }}
     <div class="card mb-2">
             <h5 class="card-title">pseudo: {{user.username}}</h5>
             <div class="card-body">
@@ -128,31 +129,33 @@
                 </form>
             </div>
         </div>
+        {{/unless}}
         {{/if}}
         {{/each}}
 
         <h3>Liste des Passagers</h3>       
         {{#each user in users}}
         {{#if equals user.profile.SamOrNot 'passager' }}
+        {{#unless user.profile.banned  }}
         <div class="card mb-2">
                 <h5 class="card-title">pseudo: {{user.username}}</h5>
                 <div class="card-body">
-                    <form action="" class="js-update-user-by-admin">
+                    <form action="" class="js-update-user-by-admin2">
                         <div class="form-group">
                             <label class="form-control-label" for="js-change-sam-or-not-admin" 
                             >Il est: {{ user.profile.SamOrNot }}</label
                             >
-                            <select class="custom-select js-change-sam-or-not-admin" name="SamOrNot">
+                            <select class="custom-select js-change-sam-or-not-admin" name="SamOrNot2">
                                 <option value="" disabled selected  >Changer son camps</option>
                                 <option value="sam">Sam</option>
                                 <option value="passager">Passager</option>
-                                <!-- <option value="">Les Deux</option> -->
+                                <!-- <option value="both">Les Deux</option> -->
                             </select>
                         </div>
                             {{#if equals user.profile.baned undefined}}
                             Il n'est pas banni
                             <div class="form-group">
-                                <select class="custom-select js-ban-admin" name="banned">
+                                <select class="custom-select js-ban-admin" name="banned2">
                                     <option value="" disabled selected  >Le bannir ?</option>
                                     <option value="true">Oui</option>
                                 </select>
@@ -168,7 +171,7 @@
                             </div> -->
                             {{/if}}
                             
-                            <input type="hidden" name="userId"  value= {{user._id}} />
+                            <input type="hidden" name="userId2"  value= {{user._id}} />
     
                         <div class="col-6 text-right">
                             <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
@@ -176,6 +179,7 @@
                     </form>
                 </div>
             </div>
+            {{/unless}}
             {{/if}}
     {{/each}}
     <h3>Liste des Bannis</h3>
@@ -224,6 +228,11 @@
                 </div>
             </div>
             {{/if}}
+    {{#if user.profile.banned  }}
+    <div class="card mb-2">
+        <h4 class="card-title">pseudo: {{user.username}}</h4>
+    </div>
+    {{/if}}
     {{/each}}
     {{/if}}
 </template>
