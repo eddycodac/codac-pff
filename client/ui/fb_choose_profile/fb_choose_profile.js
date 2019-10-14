@@ -42,9 +42,9 @@ import './fb_choose_profile.html'
                 else if(Meteor.user().profile.SamOrNot === "passager" ){
                     FlowRouter.go('/needSamForm')
                 }
-                else if(Meteor.user().profile.SamOrNot === "both" ){
-                    FlowRouter.go('/bothView')
-                }
+                // else if(Meteor.user().profile.SamOrNot === "both" ){
+                //     FlowRouter.go('/bothView')
+                // }
             }
         })
 

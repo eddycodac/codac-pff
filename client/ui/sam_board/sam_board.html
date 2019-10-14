@@ -1,7 +1,7 @@
 <template name = "sam_board_display" >
     <h3>Liste des demandes</h3>
     {{#each formNeedSam in request }}
-    {{#if equals formNeedSam.samId undefined }}
+    {{#unless  formNeedSam.samId  }}
 
         <div class="card mb-2 ">
             <div class="card-body">
@@ -20,6 +20,6 @@
                 <button type="submit"  class="btn btn-success my-2 ">Prendre la course</button>
             </form>
         </div>    
-        {{/if}}    
+        {{/unless}}    
     {{/each}}
 </template>

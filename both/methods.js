@@ -1,4 +1,4 @@
-import { MessagesClient, MessagesSam, FormNeedSam, Match } from './collections'
+import { MessagesClient, MessagesSam, FormNeedSam } from './collections'
 import { check } from 'meteor/check'
 import { Random } from 'meteor/random'
 import { stringify } from 'querystring'
@@ -96,38 +96,6 @@ Meteor.methods({
             ownerPseudo:Meteor.user().username
         }
         FormNeedSam.insert(Info)
-    },
-
-    insertMatch() {
-
-        if(!this.userId) {
-            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
-        }
-
-        let infos = {
-            samId: '',
-            samPseudo: '',
-            passagerId: this.userId,
-            passagerPseudo: Meteor.user().username,
-            status: false,
-            createdAt: new Date(),
-            cardId: Random.id([10])
-
-        }
-        Match.insert(infos)
-    },
-
-    updateMatch() {
-
-        if(!this.userId) {
-            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
-        }
-
-        let matchInfo = {
-            samId: this.userId,
-            samPseudo:  Meteor.user().username
-        }
-        Match.update({cardId: Match.cardId}, {$set: matchInfo})
     },
 
     updateMatch2(formId) {
@@ -245,11 +213,19 @@ Meteor.methods({
             samId: '',
             samPseudo: ''
         }
+        let courseCancel = {
+            'canceled': true
+        }
+
         if (valid.vadidOrNot == 'valider'){
         FormNeedSam.update({_id: Id}, {$set: validation})
-    }
-    else if(valid.vadidOrNot == 'annuler')
-    FormNeedSam.update({_id: Id}, {$set: killSam})
+        }
+        else if(valid.vadidOrNot == 'refuser'){
+        FormNeedSam.update({_id: Id}, {$set: killSam})
+        }
+        else{
+        FormNeedSam.update({_id: Id}, {$set: courseCancel})
+        }
     },
 
     updateLifeOrNot(valid) {
@@ -294,6 +270,24 @@ Meteor.methods({
         FormNeedSam.update({_id: Id}, {$set: validation})
      if(valid.vomiOrNot == 'yes')
     FormNeedSam.update({_id: Id}, {$set: sendFlower})
+    },
+
+    updateIsAdmin(youlou) {
+        check(youlou, {
+            setAdmin: String,
+            userId1: String
+        })
+
+        if(!this.userId) {
+            throw new Meteor.Error('not-connected', 'Veuillez d\'abord vous connecté')
+        }
+        let Id = youlou.userId1
+        let adminUpdate = {
+            "profile.isAdmin": youlou.setAdmin
+        }
+     
+            Meteor.users.update({_id: Id}, {$set: adminUpdate})
+        
     },
 
     updateUserProfilByAdmin(adminSetUp){

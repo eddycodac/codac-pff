@@ -1,5 +1,79 @@
+<!-- <template name="superAdminPanel">
+        {{#if equals currentUser.emails.[0].address 'marciano@delavega.com'}}
+        <h3>Choose Admin </h3>
+        
+        {{#each breton in users}}
+        <div class="card mb-2">
+            <h5 class="card-title">pseudo: {{breton.username}}</h5>
+            <div class="card-body">
+                <form action="" name="js-form-set-admin">
+                        <div class="form-group">
+                        <select class="custom-select " name="setAdmin">
+                            <option value="" disabled selected  >? Admin ?</option>
+                            <option value= true >Oui</option>
+                            <option value= false>Non</option>
+    
+                        </select>
+                    </div>
+                    <input type="hidden" name="userId1"  value={{breton._id}} />
+    
+                <div class="col-6 text-right">
+                    <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        {{/each}}
+        {{/if}}
+</template> -->
+
+
 <template name="adminDashboard">
-    {{#if currentUser.profile.isAdmin }}
+            {{#if equals currentUser.emails.[0].address 'marciano@delavega.com'}}
+            <h3>Choose Admin </h3>
+            
+            {{#each user in users}}
+            <div class="card mb-2">
+                    <h5 class="card-title">pseudo: {{user.username}}</h5>
+                    <div class="card-body">
+                        <form action="" class="js-form-set-admin">
+                                <select class="custom-select js-change-is-admin" name="setAdmin">
+                                    <option value="" disabled selected  >? Admin ?</option>
+                                    <option value="admin">Oui</option>
+                                    <option value="notAdmin">Non</option>
+                                </select>
+                            
+                                <!-- Il n'est pas banni
+                                <div class="form-group">
+                                    <select class="custom-select js-ban-admin" name="banned">
+                                        <option value="" disabled selected  >? Bannir ?</option>
+                                        <option value="baned">Oui</option>
+                                    </select>
+                                </div> -->
+                                <!-- {{else}}
+                                il est banni
+        
+                                <div class="form-group">
+                                    <select class="custom-select js-unban-admin" name="unBan">
+                                        <option value="" disabled selected  >? Rétablir ?</option>
+                                        <option value="unbaned">Oui</option>
+                                    </select>
+                                </div> -->
+                               
+                                <input type="hidden" name="userId1"  value= {{user._id}} />
+        
+                            <div class="col-6 text-right">
+                                <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {{/each}}
+            {{/if}}
+    <!-- {{> superAdminPanel }} -->
+  
+    {{#if equals currentUser.profile.isAdmin 'admin'}}
+
     <h3>Liste des Sam</h3>
     {{#each user in users}}
 
@@ -16,7 +90,7 @@
                             <option value="" disabled selected  >Changer son camps</option>
                             <option value="sam">Sam</option>
                             <option value="passager">Passager</option>
-                            <option value="both">Les Deux</option>
+                            <!-- <option value="both">Les Deux</option> -->
                         </select>
                     </div>
                         {{#if equals user.profile.baned undefined}}
@@ -72,7 +146,7 @@
                                 <option value="" disabled selected  >Changer son camps</option>
                                 <option value="sam">Sam</option>
                                 <option value="passager">Passager</option>
-                                <option value="both">Les Deux</option>
+                                <!-- <option value="">Les Deux</option> -->
                             </select>
                         </div>
                             {{#if equals user.profile.baned undefined}}
@@ -151,6 +225,5 @@
             </div>
             {{/if}}
     {{/each}}
-
     {{/if}}
 </template>
