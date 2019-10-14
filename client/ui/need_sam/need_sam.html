@@ -1,4 +1,6 @@
 <template name="needSamForm">
+{{#unless currentUser.profile.banned  }}
+{{#if equals currentUser.profile.SamOrNot 'passager'}}
     <div class="card my-2">
         <h3 class="card-header">Demander un Sam</h3>
         <div class="card-body">
@@ -19,4 +21,6 @@
             </form>
         </div>
     </div>
+    {{/if}}
+    {{/unless}}
 </template>

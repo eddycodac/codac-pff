@@ -1,4 +1,6 @@
 <template name="mesCourses">
+    {{#unless currentUser.profile.banned  }}
+    {{#if equals currentUser.profile.SamOrNot 'sam'}}
     <h3>Mes courses en attentes </h3>
     {{#each course in mesCourses}}
     {{#unless equals course.vadidOrNot 'valider'}}
@@ -93,4 +95,6 @@
         {{/if}}
         {{/if}}
     {{/each}}
+    {{/if}}
+    {{/unless}}
 </template> 
