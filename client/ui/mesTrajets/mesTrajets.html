@@ -1,4 +1,7 @@
 <template name="mesTrajets">
+        {{#unless currentUser.profile.banned  }}
+        {{#if equals currentUser.profile.SamOrNot 'passager'}}
+
     <h3>Mes trajets en attente </h3>
     {{#each trajet in mesTrajets}}
     {{#if equals trajet.ownerId currentUser._id}}
@@ -178,5 +181,7 @@
     {{/if}}
     {{/each}}
 
+    {{/if}}
+    {{/unless}}
 
 </template>

@@ -1,4 +1,5 @@
 <template name="userProfil">
+    {{#unless currentUser.profile.banned  }}
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
     rel="stylesheet"
@@ -213,4 +214,11 @@
     </div>
     
   </body>
+  {{/unless}}
+
+  {{#if currentUser.profile.banned  }}
+  <div class="card my-2">
+    <h3 class="card-header text-center bg-danger">Vous êtes bannis du site veuillez contacter un administrateur</h3>
+  </div>
+  {{/if}}
 </template>
