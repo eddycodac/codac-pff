@@ -25,9 +25,9 @@ Template.logModal.onCreated(function() {
                 else if(Meteor.user().profile.SamOrNot === "passager" ){
                     FlowRouter.go('/needSamForm')
                 }
-                else{
-                    FlowRouter.go('/bothView')
-                }
+                // else{
+                //     FlowRouter.go('/bothView')
+                // }
             }
         }
     })

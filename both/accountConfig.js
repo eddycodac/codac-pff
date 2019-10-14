@@ -81,10 +81,6 @@ AccountsTemplates.addField({
     displayName: "Sam ou Passager",
     select: [
         {
-            text: "Les Deux",
-            value: "both",
-        },
-        {
             text: "Sam",
             value: "sam",
         },

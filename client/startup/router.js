@@ -37,11 +37,11 @@ FlowRouter.route('/fbChooseProfile',{
     }
 })
 
-FlowRouter.route('/bothView',{
-    action(){
-        BlazeLayout.render('layout', { main: 'bothView' })
-    }
-})
+// FlowRouter.route('/bothView',{
+//     action(){
+//         BlazeLayout.render('layout', { main: 'bothView' })
+//     }
+// })
 
 FlowRouter.route('/userProfil',{
     action(){
