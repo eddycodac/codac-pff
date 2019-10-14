@@ -1,4 +1,6 @@
 <template name="home">
+    <br>
+    <br>
     {{#unless loggingIn}}
     {{#if equals currentUser.profile.SamOrNot "sam" }} 
     {{> sam_board_display}}
@@ -39,6 +41,9 @@
     </section>
     {{/if}}
     {{/unless}} 
+    <br>
+    <br>
+    <br>
 </template>
 <!-- <template name="home">
    
