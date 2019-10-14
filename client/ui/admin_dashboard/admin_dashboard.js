@@ -55,7 +55,29 @@ Template.adminDashboard.events({
                 event.target.setAdmin.value = ''    
             }    
         })   
-    }
+    },
+    'submit .js-update-user-by-admin2'(event, instance){
+        event.preventDefault()
+        let SamOrNot = event.target.SamOrNot2.value
+        let banned = event.target.banned2.value
+        // let unBan = event.target.unBan.value
+        let userId = event.target.userId2.value
+
+
+        Meteor.call('updateUserProfilByAdmin2', {
+            SamOrNot: SamOrNot,
+            userId: userId,
+            banned: banned,
+            // unBan: unBan
+        }, function(err, res){
+            if(!err) {
+            event.target.SamOrNot.value = ''
+            event.target.banned.value = ''
+            event.target.unBan.value = ''
+
+            }    
+        })   
+    },
 })
 
 // Template.superAdminPanel.events({
